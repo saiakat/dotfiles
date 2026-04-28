@@ -1,4 +1,4 @@
-@import "mocha.css"; 
+@import "mocha.css";
 
 * {
     font-family: "MesloLGS Nerd Font Mono Bold";
@@ -14,16 +14,31 @@ window#waybar {
     transition-duration: 0.1s;
 }
 
-#window {
+/* ── Shared pill style ── */
+#window,
+#workspaces,
+#clock,
+#pulseaudio,
+#network,
+#cpu,
+#temperature,
+#memory,
+#custom-vpn {
     margin: 8px;
     background-color: @mantle;
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-radius: 20px;
-    color: @maroon;
+    padding: 1px 16px;
+    border-radius: 30px;
 }
+
+/* ── Per-module colors ── */
+#window       { color: @maroon; }
+#clock        { color: @maroon; }
+#pulseaudio   { color: @blue; }
+#network      { color: @yellow; }
+#cpu          { color: @peach;}
+#temperature  { color: @sky; }
+#memory       { color: @flamingo; }
+#custom-vpn   { color: @lavender; }
 
 button {
     box-shadow: inset 0 -3px transparent;
@@ -37,20 +52,8 @@ button:hover {
     border-top: 2px solid @mauve;
 }
 
-#workspaces { 
-    margin: 8px;
-    background-color: @mantle;
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-radius: 20px;
-}
-
 #workspaces button {
-    padding: 4px;
-    padding-left: 8px;
-    padding-right: 8px;
+    padding: 4px 8px;
 }
 
 #workspaces button.focused {
@@ -67,104 +70,10 @@ button:hover {
     background-color: #eb4d4b;
 }
 
-#pulseaudio,
-#clock,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#wireplumber,
-#tray,
-#network,
-#mode,
-#scratchpad {
-  margin-top: 2px;
-  margin-bottom: 2px;
-  margin-left: 4px;
-  margin-right: 4px;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#clock {
-    margin: 8px;
-    color: @maroon;
-    background-color: @mantle;
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-radius: 20px;
-}
-
-#clock.date {
-    color: @mauve;
-}
-
-#pulseaudio {
-    margin: 8px;
-    color: @blue;
-    background-color: @mantle;
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-radius: 20px;
-}
-
-#network {
-    margin: 8px;
-    color: @yellow;
-    background-color: @mantle;
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-radius: 20px;
-}
-
-#cpu {
-    margin: 8px;
-    color: @peach;
-    background-color: @mantle;
-    padding-left: 14px;
-    padding-right: 16px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-radius: 20px;
-}
-
-#temperature {
-    margin: 8px;
-    color: @sky;
-    background-color: @mantle;
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-radius: 20px;
-}
+#clock.date { color: @mauve; }
 
 #temperature.critical {
     color: @red;
-    background-color: @mantle;
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-radius: 20px;
-}
-
-#memory {
-    margin: 8px;
-    color: @flamingo;
-    background-color: @mantle;
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-radius: 20px;
 }
 
 #idle_inhibitor {
@@ -175,15 +84,4 @@ button:hover {
 
 #idle_inhibitor.activated {
     color: @red;
-}
-
-#custom-vpn {
-    margin: 8px;
-    color: @lavender;
-    background-color: @mantle;
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-radius: 20px;
 }
