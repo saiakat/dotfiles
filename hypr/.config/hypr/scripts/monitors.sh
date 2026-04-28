@@ -29,10 +29,10 @@ fi
 if [ -n "$left" ] && [ -n "$right" ]; then
     hyprctl keyword monitor "$left,preferred,auto-left,auto"
     hyprctl keyword monitor "$right,preferred,auto-right,auto"
-    hyprctl keyword workspace "1,monitor:$left"
-    hyprctl keyword workspace "2,monitor:$left"
-    hyprctl keyword workspace "3,monitor:$right"
-    hyprctl keyword workspace "4,monitor:$right"
+    hyprctl keyword workspace "1, monitor:$left"
+    hyprctl keyword workspace "2, monitor:$left"
+    hyprctl keyword workspace "3, monitor:$right"
+    hyprctl keyword workspace "4, monitor:$right"
 elif [ -n "$left" ]; then
     hyprctl keyword monitor "$left,preferred,auto,auto"
     for i in 1 2 3 4; do
