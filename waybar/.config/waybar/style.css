@@ -17,6 +17,9 @@ window#waybar {
     transition-duration: 0.1s;
 }
 
+#window {
+}
+
 /* ── Shalove pill style ── */
 #window,
 #workspaces,
@@ -46,9 +49,10 @@ window#waybar {
 /* #custom-vpn   { color: @lavender; } */
 
 #workspaces {
+  background-color: @mantle;
   border: none;
-  background: transparent;
-  padding: 0;
+  padding: 0 10px;
+  /* background: transparent; */
 }
 button {
     box-shadow: inset 0 -3px transparent;
@@ -65,8 +69,8 @@ button:hover {
 #workspaces button {
     margin: 10px 0;
     margin-right: 5px;
-    background-color: @base;
-    border: 1px solid @crust; 
+    background-color: @overlay;
+    border: 1px solid @highlightlow; 
     border-radius: 10px;
     transition: all 200ms ease-in-out;
     padding: 0 6px;
@@ -76,7 +80,7 @@ button:hover {
 #workspaces button.active {
     color: @mauve;
     border: 1.5px solid @mauve;
-    padding: 0 12px;
+    padding: 0 15px;
 }
 
 #workspaces button.urgent {
