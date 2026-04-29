@@ -30,12 +30,13 @@ window#waybar {
 #temperature,
 #memory,
 #custom-updates,
+#custom-holidays,
 #custom-vpn {
     margin: 8px 10px;
     background-color: @basemoon;
     padding: 0 20px;
     border-radius: 30px;
-    border: 1px solid @crust; 
+    border: 1px solid @flamingo; 
     color: @iris;
 }
 

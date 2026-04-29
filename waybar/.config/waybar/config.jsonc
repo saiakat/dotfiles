@@ -7,7 +7,8 @@
   "modules-left": [
     "clock",
     "pulseaudio",
-    "custom/updates"
+    "custom/updates",
+    "custom/holidays",
   ],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": [
@@ -67,5 +68,11 @@
     "on-click": "pkill -SIGRTMIN+8 waybar",
     "signal": 8,
     "tooltip-format": "{} updates available",
+  },
+  "custom/holidays": {
+    "format": "󰧒   {}",
+    "interval": "once",
+    "exec": "sh ~/utils/get-holidays.sh",
+    "tooltip-format": "{} days until the next holiday",
   },
 }
