@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-sleep 0.5 
-
 monitors=$(hyprctl monitors | awk '/^Monitor / {print $2}')
 
 dp_monitors=$(echo "$monitors" | grep "DP" | sort -t'-' -k2 -n)
