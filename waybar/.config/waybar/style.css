@@ -1,4 +1,5 @@
 @import "mocha.css";
+@import "moon.css";
 
 * {
     font-family: "MesloLGS Nerd Font Mono Bold";
@@ -16,7 +17,7 @@ window#waybar {
     transition-duration: 0.1s;
 }
 
-/* ── Shared pill style ── */
+/* ── Shalove pill style ── */
 #window,
 #workspaces,
 #clock,
@@ -27,11 +28,11 @@ window#waybar {
 #memory,
 #custom-vpn {
     margin: 8px 10px;
-    background-color: @base;
+    background-color: @basemoon;
     padding: 0 20px;
     border-radius: 30px;
     border: 1px solid @crust; 
-    color: @blue;
+    color: @iris;
 }
 
 /* ── Per-module colors ── */
@@ -65,6 +66,7 @@ button:hover {
     margin: 10px 0;
     margin-right: 5px;
     background-color: @base;
+    border: 1px solid @crust; 
     border-radius: 10px;
     transition: all 200ms ease-in-out;
     padding: 0 6px;
@@ -78,14 +80,15 @@ button:hover {
 }
 
 #workspaces button.urgent {
-    color: @red;
+    color: @love;
+    border: 1.5px solid @love;
 }
 
 tooltip {
   background-color: @mantle;
-  color: @text;
+  color: @textmoon;
 }
 
 #temperature.critical {
-    color: @red;
+    color: @love;
 }
