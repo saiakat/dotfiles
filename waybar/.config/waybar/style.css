@@ -3,6 +3,8 @@
 * {
     font-family: "MesloLGS Nerd Font Mono Bold";
     min-height: 0;
+    margin: 0;
+    padding: 0;
     font-size: 16px;
     font-weight: bold;
 }
@@ -24,22 +26,23 @@ window#waybar {
 #temperature,
 #memory,
 #custom-vpn {
-    margin: 8px;
-    margin-bottom: 0;
+    margin: 8px 10px;
     background-color: @mantle;
     padding: 0 20px;
     border-radius: 30px;
+    border: 1px solid @crust; 
+    color: @blue;
 }
 
 /* ── Per-module colors ── */
-#window       { color: @maroon; }
-#clock        { color: @maroon; }
-#pulseaudio   { color: @blue; }
-#network      { color: @yellow; }
-#cpu          { color: @peach;}
-#temperature  { color: @sky; }
-#memory       { color: @flamingo; }
-#custom-vpn   { color: @lavender; }
+#window       { color: @sapphire; }
+/* #clock        { color: @maroon; } */
+/* #pulseaudio   { color: @blue; } */
+/* #network      { color: @yellow; } */
+/* #cpu          { color: @peach;} */
+/* #temperature  { color: @sky; } */
+/* #memory       { color: @flamingo; } */
+/* #custom-vpn   { color: @lavender; } */
 
 button {
     box-shadow: inset 0 -3px transparent;
@@ -54,12 +57,9 @@ button:hover {
 }
 
 #workspaces button {
-    padding: 0 8px;
-}
-
-#workspaces button.focused {
-    color: @rosewater;
-    border-top: 2px solid @rosewater;
+    transition: all 200ms ease-in-out;
+    padding: 0 5px;
+    color: @lavender;
 }
 
 #workspaces button.active {
@@ -68,21 +68,14 @@ button:hover {
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+    background-color: @red;
 }
 
-#clock.date { color: @mauve; }
+tooltip {
+  background-color: @mantle;
+  color: @text;
+}
 
 #temperature.critical {
-    color: @red;
-}
-
-#idle_inhibitor {
-    margin: 8px;
-    margin-right: 12px;
-    color: #7cb342;
-}
-
-#idle_inhibitor.activated {
     color: @red;
 }
