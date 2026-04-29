@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+# Wait until at least one monitor is available
+until hyprctl monitors | grep -q "^Monitor"; do
+    sleep 0.5
+done
+
+monitors=$(hyprctl monitors | awk '/^Monitor / {print $2}')
+...
 monitors=$(hyprctl monitors | awk '/^Monitor / {print $2}')
 
 dp_monitors=$(echo "$monitors" | grep "DP" | sort -t'-' -k2 -n)
