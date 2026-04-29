@@ -15,19 +15,19 @@
     "clock"
   ],
     "clock": {
-        "format": "{:%a %d %H:%M}",
+        "format": "    {:%a %d %H:%M}",
         "tooltip-format": "<big>{:%a %d %Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%d.%m.%Y}"
     },
   "network": {
     "format-wifi": "{essid} ({signalStrength}%)  ",
-    "format-ethernet": "{ipaddr}/{cidr} ",
-    "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "Disconnected ",
+    "format-ethernet": "  {ipaddr}/{cidr}",
+    "format-linked": "  {ifname} (No IP)",
+    "format-disconnected": "  Disconnected",
     "tooltip-format-wifi": "Signal Strenght: {signalStrength}%"
   },
   "pulseaudio": {
-      "format": "{icon}  {volume}%",
+      "format": "{icon}   {volume}%",
       "format-muted": "",
       "format-icons": {
           "default": ["", "", " "]
@@ -35,18 +35,18 @@
       "on-click": "pavucontrol"
   },
   "cpu": {
-    "format": "  {usage}%",
+    "format": "    {usage}%",
     "tooltip": false
   },
   "memory": {
-    "format": "  {}%"
+    "format": "   {}%"
   },
   "temperature": {
     // "thermal-zone": 2,
     // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
     "critical-threshold": 80,
     // "format-critical": "{temperatureC}°C {icon}",
-    "format": "{icon} {temperatureC}°C",
+    "format": "{icon}  {temperatureC}°C",
     "format-icons": ["", "", ""]
   },
   "hyprland/workspaces": {
