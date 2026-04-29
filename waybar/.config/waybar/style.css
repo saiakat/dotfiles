@@ -27,7 +27,7 @@ window#waybar {
 #memory,
 #custom-vpn {
     margin: 8px 10px;
-    background-color: @mantle;
+    background-color: @base;
     padding: 0 20px;
     border-radius: 30px;
     border: 1px solid @crust; 
@@ -35,7 +35,7 @@ window#waybar {
 }
 
 /* ── Per-module colors ── */
-#window       { color: @sapphire; }
+/* #window       { color: @blue; } */
 /* #clock        { color: @maroon; } */
 /* #pulseaudio   { color: @blue; } */
 /* #network      { color: @yellow; } */
@@ -44,6 +44,11 @@ window#waybar {
 /* #memory       { color: @flamingo; } */
 /* #custom-vpn   { color: @lavender; } */
 
+#workspaces {
+  border: none;
+  background: transparent;
+  padding: 0;
+}
 button {
     box-shadow: inset 0 -3px transparent;
     border: none;
@@ -57,18 +62,23 @@ button:hover {
 }
 
 #workspaces button {
+    margin: 10px 0;
+    margin-right: 5px;
+    background-color: @base;
+    border-radius: 10px;
     transition: all 200ms ease-in-out;
-    padding: 0 5px;
+    padding: 0 6px;
     color: @lavender;
 }
 
 #workspaces button.active {
     color: @mauve;
-    border-top: 2px solid @mauve;
+    border: 1.5px solid @mauve;
+    padding: 0 12px;
 }
 
 #workspaces button.urgent {
-    background-color: @red;
+    color: @red;
 }
 
 tooltip {
