@@ -29,6 +29,7 @@ window#waybar {
 #cpu,
 #temperature,
 #memory,
+#custom-updates,
 #custom-vpn {
     margin: 8px 10px;
     background-color: @basemoon;
@@ -67,8 +68,7 @@ button:hover {
 }
 
 #workspaces button {
-    margin: 10px 0;
-    margin-right: 5px;
+    margin: 10px 2.5px;
     background-color: @overlay;
     border: 1px solid @highlightlow; 
     border-radius: 10px;
