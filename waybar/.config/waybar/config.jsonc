@@ -53,7 +53,7 @@
     "format-icons": ["", "", ""]
   },
   "hyprland/workspaces": {
-    "format": "{name}", // or "{icon}"
+    "format": "{id}", // or "{icon}"
     "disable-scroll": true,
     "all-outputs": true,
     "warp-on-scroll": false,
