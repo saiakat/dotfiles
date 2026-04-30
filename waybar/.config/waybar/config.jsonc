@@ -18,6 +18,7 @@
     "temperature",
     "memory",
     "cpu",
+    "custom/power",
   ],
     "clock": {
         "format": " {:%a %d %H:%M}",
@@ -47,10 +48,7 @@
     "format": " {}%"
   },
   "temperature": {
-    // "thermal-zone": 2,
-    // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
     "critical-threshold": 80,
-    // "format-critical": "{temperatureC}°C {icon}",
     "format": "{icon} {temperatureC}°C",
     "format-icons": ["", "", ""]
   },
@@ -74,6 +72,7 @@
   "custom/holidays": {
     "format": "<big>󰧒</big> {}",
     "interval": "once",
+    // used for debugging since api has a rate limit
     // "exec": "echo 1",
     "exec": "sh ~/utils/get-holidays.sh",
     "tooltip-format": "{} days until the next holiday",
@@ -89,5 +88,10 @@
     "interval": 30,
     "exec": "df -h / | awk 'NR==2 {print $3 \"  \" $2}'",
     "tooltip-format": "Used: {}\nPartition: /root"
+  },
+  "custom/power": {
+    "format": "󰤆",
+    "on-click": "wlogout",
+    "tooltip": false,
   }
 }

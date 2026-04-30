@@ -29,6 +29,7 @@ window#waybar {
 #custom-updates,
 #custom-holidays,
 #custom-disk-root,
+#custom-power,
 #custom-disk-home {
     margin: 10px 6px;
     background-color: @basemoon;
@@ -47,6 +48,18 @@ window#waybar {
 /* #temperature  { color: @sky; } */
 /* #memory       { color: @flamingo; } */
 /* #custom-vpn   { color: @lavender; } */
+
+#custom-power:hover,
+#clock:hover,
+#pulseaudio:hover,
+#custom-updates:hover{
+  background-color: @mantle;
+  color: @textmoon;
+}
+
+#custom-power:hover {
+  color: @love;
+}
 
 #workspaces {
   background-color: @mantle;
