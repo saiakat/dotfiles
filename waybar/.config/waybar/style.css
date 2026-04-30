@@ -6,7 +6,7 @@
     min-height: 0;
     margin: 0;
     padding: 0;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: bold;
 }
 
@@ -30,9 +30,9 @@ window#waybar {
 #custom-holidays,
 #custom-disk-root,
 #custom-disk-home {
-    margin: 8px 10px;
+    margin: 10px 6px;
     background-color: @basemoon;
-    padding: 0 20px;
+    padding: 0 16px;
     border-radius: 30px;
     border: 1px solid @flamingo; 
     color: @iris;
@@ -66,7 +66,7 @@ button {
     border: 1px solid @highlightlow; 
     border-radius: 10px;
     transition: all 200ms ease-in-out;
-    padding: 0 6px;
+    padding: 0 5px;
     color: @overlay;
     /* color: @lavender; */
 }
@@ -79,7 +79,7 @@ button {
 #workspaces button.active {
     color: @mauve;
     border: 1.5px solid @mauve;
-    padding: 0 15px;
+    padding: 0 12px;
 }
 
 #workspaces button.urgent {

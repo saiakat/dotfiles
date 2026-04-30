@@ -74,6 +74,7 @@
   "custom/holidays": {
     "format": "<big>󰧒</big> {}",
     "interval": "once",
+    // "exec": "echo 1",
     "exec": "sh ~/utils/get-holidays.sh",
     "tooltip-format": "{} days until the next holiday",
   },
