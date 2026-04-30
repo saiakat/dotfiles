@@ -17,9 +17,6 @@ window#waybar {
     transition-duration: 0.1s;
 }
 
-#window {
-}
-
 /* ── Shalove pill style ── */
 #window,
 #workspaces,
@@ -31,6 +28,8 @@ window#waybar {
 #memory,
 #custom-updates,
 #custom-holidays,
+#custom-disk-root,
+#custom-disk-home,
 #custom-vpn {
     margin: 8px 10px;
     background-color: @basemoon;

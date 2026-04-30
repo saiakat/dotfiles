@@ -13,6 +13,8 @@
   "modules-center": ["hyprland/workspaces"],
   "modules-right": [
     "network",
+    "custom/disk-root",
+    "custom/disk-home",
     "temperature",
     "memory",
     "cpu",
@@ -75,4 +77,16 @@
     "exec": "sh ~/utils/get-holidays.sh",
     "tooltip-format": "{} days until the next holiday",
   },
+  "custom/disk-home": {
+    "format": "  {}",
+    "interval": 30,
+    "exec": "df -h /home | awk 'NR==2 {print $3 \"  \" $2}'",
+    "tooltip-format": "Used: {}\nPartition: /home"
+  },
+  "custom/disk-root": {
+    "format": "  {}",
+    "interval": 30,
+    "exec": "df -h / | awk 'NR==2 {print $3 \"  \" $2}'",
+    "tooltip-format": "Used: {}\nPartition: /root"
+  }
 }
