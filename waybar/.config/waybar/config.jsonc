@@ -20,19 +20,19 @@
     "cpu",
   ],
     "clock": {
-        "format": "    {:%a %d %H:%M}",
+        "format": " {:%a %d %H:%M}",
         "tooltip-format": "<big>{:%a %d %Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%d.%m.%Y}"
     },
   "network": {
     "format-wifi": "{essid} ({signalStrength}%)  ",
-    "format-ethernet": "  {ipaddr}/{cidr}",
-    "format-linked": "  {ifname} (No IP)",
+    "format-ethernet": " {ipaddr}/{cidr}",
+    "format-linked": " {ifname} (No IP)",
     "format-disconnected": "  Disconnected",
     "tooltip-format-wifi": "Signal Strenght: {signalStrength}%"
   },
   "pulseaudio": {
-      "format": "{icon}   {volume}%",
+      "format": "{icon} {volume}%",
       "format-muted": "",
       "format-icons": {
           "default": ["", "", " "]
@@ -40,19 +40,19 @@
       "on-click": "pavucontrol"
   },
   "cpu": {
-    "format": "    {usage}%",
+    "format": " {usage}%",
     "tooltip": false
   },
   "memory": {
-    "format": "   {}%"
+    "format": " {}%"
   },
   "temperature": {
     // "thermal-zone": 2,
     // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
     "critical-threshold": 80,
     // "format-critical": "{temperatureC}°C {icon}",
-    "format": "{icon}  {temperatureC}°C",
-    "format-icons": ["", "", ""]
+    "format": "{icon} {temperatureC}°C",
+    "format-icons": ["", "", ""]
   },
   "hyprland/workspaces": {
     "format": "{id}", // or "{icon}"
@@ -64,7 +64,7 @@
     "max-length": 20,
   },
   "custom/updates": {
-    "format": "     {}",
+    "format": "<big></big>  {}",
     "interval": "once",
     "exec": "checkupdates | wc -l",
     "on-click": "pkill -SIGRTMIN+8 waybar",
@@ -72,19 +72,20 @@
     "tooltip-format": "{} updates available",
   },
   "custom/holidays": {
-    "format": "󰧒   {}",
+    "format": "<big>󰧒</big> {}",
     "interval": "once",
-    "exec": "sh ~/utils/get-holidays.sh",
+    // "exec": "sh ~/utils/get-holidays.sh",
+    "exec": "echo 1",
     "tooltip-format": "{} days until the next holiday",
   },
   "custom/disk-home": {
-    "format": "  {}",
+    "format": " {}",
     "interval": 30,
     "exec": "df -h /home | awk 'NR==2 {print $3 \"  \" $2}'",
     "tooltip-format": "Used: {}\nPartition: /home"
   },
   "custom/disk-root": {
-    "format": "  {}",
+    "format": " {}",
     "interval": 30,
     "exec": "df -h / | awk 'NR==2 {print $3 \"  \" $2}'",
     "tooltip-format": "Used: {}\nPartition: /root"
