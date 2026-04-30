@@ -1,6 +1,13 @@
 image=~/wallpapers/wall2.png
 scaling=center
 show-failed-attempts
-ring-color=#c4a7e7
+ring-color=#f2cdcd
+ring-ver-color=#f2cdcd
 show-keyboard-layout
 indicator-caps-lock
+indicator-idle-visible
+inside-ver-color=#89b4fa
+inside-color=#393552
+key-hl-color=#f38ba8
+inside-wrong-color=#f38ba8
+ring-wrong-color=#f38ba8

@@ -69,7 +69,8 @@ button {
     border-radius: 10px;
     transition: all 200ms ease-in-out;
     padding: 0 6px;
-    color: @lavender;
+    color: @overlay;
+    /* color: @lavender; */
 }
 
 #workspaces button:hover {
