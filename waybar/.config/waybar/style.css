@@ -30,6 +30,7 @@ window#waybar {
 #custom-holidays,
 #custom-disk-root,
 #custom-power,
+#custom-weather,
 #custom-disk-home {
     margin: 10px 6px;
     background-color: @basemoon;
@@ -51,8 +52,8 @@ window#waybar {
 
 #custom-power:hover,
 #clock:hover,
-#pulseaudio:hover,
-#custom-updates:hover{
+#custom-weather:hover,
+#pulseaudio:hover {
   background-color: @mantle;
   color: @textmoon;
 }

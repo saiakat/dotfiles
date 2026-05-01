@@ -9,6 +9,7 @@
     "clock",
     "pulseaudio",
     "custom/updates",
+    "custom/weather",
     "custom/holidays",
   ],
   "modules-center": ["hyprland/workspaces"],
@@ -69,10 +70,10 @@
     "tooltip-format": "{} updates available",
   },
   "custom/holidays": {
-    "format": "<big>󰧒</big> {}",
+    "return-type": "json",
+    "format": "{}",
     "interval": "once",
     "exec": "cat ~/.cache/waybar/holidays",
-    "tooltip-format": "{} days until the next holiday",
   },
   "custom/disk-home": {
     "format": " {}",
@@ -90,5 +91,14 @@
     "format": "󰤆",
     "on-click": "wlogout",
     "tooltip": false,
+  },
+  "custom/weather": {
+    "return-type": "json",
+    "format": "{}",
+    "interval": 3600,
+    "exec": "~/.config/waybar/scripts/weather.sh",
+    "signal": 8,
+    "on-click": "pkill -RTMIN+8 waybar",
+    "tooltip": true,
   }
 }
