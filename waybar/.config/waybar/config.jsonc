@@ -1,6 +1,7 @@
 {
   "position": "top",
   "height": 60, 
+  "output": ["*"],
   "margin-top": 10,
   "margin-left": 20,
   "margin-right": 20,
@@ -64,17 +65,13 @@
   "custom/updates": {
     "format": "<big></big>  {}",
     "interval": "once",
-    "exec": "checkupdates | wc -l",
-    "on-click": "pkill -SIGRTMIN+8 waybar",
-    "signal": 8,
+    "exec": "cat ~/.cache/waybar/updates",
     "tooltip-format": "{} updates available",
   },
   "custom/holidays": {
     "format": "<big>󰧒</big> {}",
     "interval": "once",
-    // used for debugging since api has a rate limit
-    // "exec": "echo 1",
-    "exec": "sh ~/utils/get-holidays.sh",
+    "exec": "cat ~/.cache/waybar/holidays",
     "tooltip-format": "{} days until the next holiday",
   },
   "custom/disk-home": {
