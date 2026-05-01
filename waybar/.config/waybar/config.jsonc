@@ -96,7 +96,7 @@
     "return-type": "json",
     "format": "{}",
     "interval": 3600,
-    "exec": "~/.config/waybar/scripts/weather.sh",
+    "exec": "cat ~/.cache/waybar/weather",
     "signal": 8,
     "on-click": "pkill -RTMIN+8 waybar",
     "tooltip": true,
