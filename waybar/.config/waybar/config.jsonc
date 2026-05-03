@@ -10,6 +10,7 @@
     "custom/weather",
     "custom/holidays",
     "pulseaudio",
+    "custom/wp-next"
   ],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": [
@@ -20,7 +21,7 @@
     "custom/disk-root",
     "custom/disk-home",
     "memory",
-    "custom/power",
+    "custom/power"
   ],
     "clock": {
         "format": " {:%a %d %H:%M}",
@@ -55,25 +56,25 @@
     "format-icons": ["", "", ""]
   },
   "hyprland/workspaces": {
-    "format": "{id}", // or "{icon}"
+    "format": "{id}",
     "disable-scroll": true,
     "all-outputs": true,
-    "warp-on-scroll": false,
+    "warp-on-scroll": false
   },
   "hyprland/window": {
-    "max-length": 20,
+    "max-length": 20
   },
   "custom/updates": {
     "format": "<big></big>  {}",
     "interval": "once",
     "exec": "cat ~/.cache/waybar/updates",
-    "tooltip-format": "{} updates available",
+    "tooltip-format": "{} updates available"
   },
   "custom/holidays": {
     "return-type": "json",
     "format": "{}",
     "interval": "once",
-    "exec": "cat ~/.cache/waybar/holidays",
+    "exec": "cat ~/.cache/waybar/holidays"
   },
   "custom/disk-home": {
     "format": " {}",
@@ -90,7 +91,7 @@
   "custom/power": {
     "format": "󰤆",
     "on-click": "wlogout",
-    "tooltip": false,
+    "tooltip": false
   },
   "custom/weather": {
     "return-type": "json",
@@ -99,6 +100,10 @@
     "exec": "cat ~/.cache/waybar/weather",
     "signal": 8,
     "on-click": "pkill -RTMIN+8 waybar",
-    "tooltip": true,
+    "tooltip": true
+  },
+  "custom/wp-next": {
+    "format": "=>",
+    "on-click": "walls.sh next"
   }
 }
