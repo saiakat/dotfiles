@@ -10,10 +10,10 @@
     "custom/weather",
     "custom/holidays",
     "pulseaudio",
-    "custom/wp-next"
   ],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": [
+    // "custom/wp-next"
     // "network",
     // "temperature",
     // "cpu",
