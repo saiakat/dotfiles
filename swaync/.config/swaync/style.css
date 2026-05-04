@@ -1,0 +1,223 @@
+@import "mocha.css";
+@import "moon.css";
+
+* {
+  background: @manle;
+  font-family: "JetBrainsMono Nerd Font Mono";
+  border-radius: 10px;
+}
+
+.control-center .notification-row:focus,
+.control-center .notification-row:hover {
+  opacity: 1;
+}
+
+.notification-row {
+  background: inherit;
+}
+
+.notification {
+  background: @mantle;
+  border: 2px solid @flamingo;
+  margin: 3px -2px 3px 0;
+  border-radius: 10px;
+}
+
+.close-button {
+  opacity: 0;
+}
+
+.notification-action {
+  border: 2px solid @flamingo;
+}
+
+.notification-default-action:hover,
+.notification-action:hover {
+  color: @blue;
+}
+
+.inline-reply-entry {
+  background: inherit;
+  color: @iris;
+  caret-color: @iris;
+}
+
+.inline-reply-button {
+  margin-top: 4px;
+  margin-left: 4px;
+  background: @mantle;
+  border: 1px solid @flamingo;
+  color: @iris;
+}
+
+.inline-reply-button:disabled {
+  background: transparent;
+  color: @text;
+  border: 1px solid transparent;
+}
+
+.inline-reply-button:hover {
+  background: @crust;
+}
+
+.summary {
+  font-size: 16px;
+  font-weight: 700;
+  background: transparent;
+  color: @iris;
+  text-shadow: none;
+}
+
+.time {
+  font-size: 16px;
+  font-weight: 700;
+  background: transparent;
+  color: @text;
+  text-shadow: none;
+  margin-right: 18px;
+}
+
+.body {
+  font-size: 15px;
+  font-weight: 400;
+  background: transparent;
+  color: @text;
+  text-shadow: none;
+}
+
+.control-center {
+  border-radius: 10px;
+  background: @mantle;
+  border: 2px solid @flamingo;
+}
+
+.widget-title {
+  color: @iris;
+  background: @base;
+  padding: 5px 10px;
+  margin: 10px;
+  font-size: 1.5rem;
+}
+
+.widget-title>button {
+  font-size: 1rem;
+  color: @text;
+  background: @crust;
+  box-shadow: none;
+}
+
+.widget-title>button:hover {
+  background: @love;
+  color: @crust;
+}
+
+.widget-dnd {
+  background: @base;
+  padding: 5px 10px;
+  margin: 10px;
+  font-size: large;
+}
+
+.widget-dnd label{
+  color: @iris;
+}
+
+.widget-dnd>switch {
+  background: @crust;
+}
+
+.widget-dnd>switch slider {
+  background: @text;
+}
+
+.widget-dnd>switch:checked {
+  background: @highlightmedium;
+  border: 1px solid @flamingo;
+}
+
+.widget-dnd>switch:checked slider {
+  background: @crust;
+}
+
+.widget-label>label {
+  font-size: 1rem;
+  margin: 10px;
+}
+
+.widget-buttons-grid {
+  font-size: x-large;
+  padding: 5px;
+  margin: 0px 10px 10px 10px;
+  background: @base;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button {
+  margin: 3px;
+  padding: 4px 30px;
+  background: @crust;
+  color: @text;
+  transition: background-color 0.15s ease-in-out;
+  border-radius: 10px;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button:hover {
+  background: @highlightmedium;
+  color: @base;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button:checked {
+  background: @love;
+  color: @crust;
+}
+
+.widget-volume {
+  background: @base;
+  padding: 5px;
+  margin: 5px 10px;
+  font-size: 2rem;
+  color: @text;
+}
+
+.widget-volume label {
+  padding-left: 10px;
+}
+
+.widget-volume slider{
+  border-radius: 30px;
+  border-color: @flamingo;
+  background: @crust;
+}
+
+.widget-volume trough{
+  background: @highlightmedium;
+}
+
+.widget-volume highlight{
+  background: @subtle;
+}
+
+.widget-mpris {
+  color: @iris;
+  background: @base;
+  margin: 0px 10px 10px 10px;
+  box-shadow: none;
+}
+
+.widget-mpris>box>button,
+.widget-mpris-player,
+.widget-mpris-album-art {
+  border-radius: 0;
+  box-shadow: none;
+  margin: 10px;
+}
+
+picture.mpris-background {
+  opacity: 0;
+}
+
+.widget-dnd,
+.widget-volume,
+.widget-buttons-grid {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
