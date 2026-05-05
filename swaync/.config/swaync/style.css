@@ -136,7 +136,7 @@
 }
 
 .widget-dnd>switch:checked slider {
-  background: @crust;
+  background: @base;
 }
 
 .widget-label>label {
