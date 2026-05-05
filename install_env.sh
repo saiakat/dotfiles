@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-packages=("lua" "neovim" "swaync" "swaylock" "grimblast" "grim" "mpv" "waybar" "wofi" "kitty" "hypridle" "ripgrep" "nodejs" "npm" "hyprpicker" "nautilus" "discord" "proton-vpn-gtk-app" "veracrypt" "catppuccin-gtk-theme-mocha" "cronie")
+packages=("lua" "neovim" "swaync" "swaylock" "grimblast" "grim" "mpv" "waybar" "wofi" "kitty" "hypridle" "ripgrep" "nodejs" "npm" "hyprpicker" "nautilus" "discord" "proton-vpn-gtk-app" "veracrypt" "catppuccin-gtk-theme-mocha" "cronie" "pavucontrol")
 configs=("hypr" "kitty" "mpv" "swaylock" "swaync" "waybar" "wofi")
 
 set -euo pipefail
