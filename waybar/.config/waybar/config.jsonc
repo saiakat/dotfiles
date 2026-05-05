@@ -37,7 +37,7 @@
   },
   "pulseaudio": {
       "format": "{icon} {volume}%",
-      "format-muted": "",
+      "format-muted": "<span font-family='JetBrainsMono Nerd Font Mono' font='18'></span>",
       "format-icons": {
           "default": ["", "", " "]
       },
