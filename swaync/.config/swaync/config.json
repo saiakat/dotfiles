@@ -24,12 +24,12 @@
   "text-empty": "No Notification",
   "scripts": {
     "sound-script-discord": {
-      "exec": "~/.config/swaync/scripts/sound.sh discord_sound.mp3",
+      "exec": "lua $HOME/.config/swaync/scripts/sound.lua discord_sound.mp3",
       "app-name": "discord"
     },
     "sound-script-general": {
-      "exec": "~/.config/swaync/scripts/sound.sh notification.mp3",
-      "app-name": "*"
+      "exec": "lua $HOME/.config/swaync/scripts/sound.lua notification.mp3",
+      "app-name": "^(?!discord$).*"
     }
   },
   "widgets": ["title", "dnd", "buttons-grid", "mpris", "volume"],
