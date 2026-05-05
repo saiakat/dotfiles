@@ -23,9 +23,13 @@
   "script-fail-notify": true,
   "text-empty": "No Notification",
   "scripts": {
-    "sound-script": {
-      "exec": "~/.config/swaync/scripts/sound.sh",
+    "sound-script-discord": {
+      "exec": "~/.config/swaync/scripts/sound.sh discord_sound.mp3",
       "app-name": "discord"
+    },
+    "sound-script-general": {
+      "exec": "~/.config/swaync/scripts/sound.sh notification.mp3",
+      "app-name": "*"
     }
   },
   "widgets": ["title", "dnd", "buttons-grid", "mpris", "volume"],
