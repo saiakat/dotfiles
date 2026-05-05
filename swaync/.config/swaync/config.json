@@ -59,7 +59,7 @@
         },
         {
           "label": "󰍃",
-          "command": "logout"
+          "command": "swaylock"
         },
         {
           "label": "",
