@@ -1,4 +1,19 @@
 @define-color	rosewater  #f5e0dc;
+@define-color love #eb6f92;
+@define-color gold #f6c177;
+@define-color rose #ea9a97;
+@define-color pine #3e8fb0;
+@define-color foam #9ccfd8;
+@define-color iris #c4a7e7;
+@define-color highlightlow #2a283e;
+@define-color highlightmedium #44415a;
+@define-color highlighthigh #56526e;
+@define-color muted #6e6a86;
+@define-color subtle #a6adc8;
+@define-color basemoon #232136;
+@define-color surface #2a273f;
+@define-color overlay #393552;
+@define-color textmoon #e0def4;
 @define-color	rosewater-rgb  rgb(245, 224, 220);
 @define-color	flamingo  #f2cdcd;
 @define-color	flamingo-rgb  rgb(242, 205, 205);
@@ -60,17 +75,18 @@
 window {
   margin: 0px;
   padding: 10px;
-  border: 2px solid @lavender;
+  border: 2px solid @flamingo;
   border-radius: 8px;
-  background-color: @base;
+  background-color: @mantle;
 }
 
 /* Inner Box */
 #inner-box {
   margin: 5px;
   padding: 10px;
-  border: none;
-  background-color: @base;
+  border: 2px solid @crust;
+  background-color: @basemoon;
+  border-radius: 0.3em;
 }
 
 /* Outer Box */
@@ -78,7 +94,7 @@ window {
   margin: 5px;
   padding: 10px;
   border: none;
-  background-color: @base;
+  background-color: inherit;
 }
 
 /* Scroll */
@@ -86,17 +102,17 @@ window {
   margin: 0px;
   padding: 10px;
   border: none;
-  background-color: @base;
+  background-color: inherit;
 }
 
 /* Input */
 #input {
-  margin: 5px 20px;
+  margin: 5px 15px;
   padding: 10px;
-  border: none;
-  border-radius: 0.1em;
-  color: @text;
-  background-color: @base;
+  border: 2px solid @crust;
+  border-radius: 0.3em;
+  color: @textmoon;
+  background-color: @basemoon;
 }
 
 #input image {
@@ -112,25 +128,25 @@ window {
 #text {
   margin: 5px;
   border: none;
-  color: @text;
+  color: @textmoon;
 }
 
 #entry {
-  background-color: @base;
+  background-color: @basemoon;
 }
 
 #entry arrow {
   border: none;
-  color: @lavender;
+  color: @iris;
 }
 
 /* Selected Entry */
 #entry:selected {
-  border: 0.11em solid @lavender;
+  border: 0.11em solid @flamingo;
 }
 
 #entry:selected #text {
-  color: @mauve;
+  color: @iris;
 }
 
 #entry:drop(active) {
