@@ -117,7 +117,7 @@ if [ ! -d "$HOME/.config" ]; then
 fi
 
 for conf in "${configs[@]}"; do
-    conf_path="$HOME/dotfiles/$conf/.config/$conf"
+    conf_path="$HOME/dotfiles/$conf"
     ln -sf "$conf_path" "$HOME/.config/$conf"
     echo "✔ Linked $conf"
     if [ -d "$conf_path/scripts" ]; then
