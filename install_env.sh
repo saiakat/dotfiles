@@ -92,8 +92,16 @@ if [ ! -d "$HOME/.config" ]; then
 fi
 
 for conf in "${configs[@]}"; do
-    ln -sf "$HOME/dotfiles/$conf" "$HOME/.config/$conf"
+    conf_path="$HOME/dotfiles/$conf/.config/$conf"
+    ln -sf "$conf_path" "$HOME/.config/$conf"
     echo "✔ Linked $conf"
+    if [ -d "$conf_path/scripts" ]; then
+      for file in "$conf_path/scripts/"*; do
+        if [ -f "$file" ]; then
+          chmod +x $file
+        fi
+      done
+    fi
 done
 
 if [ ! -d "$HOME/.config/nvim" ]; then
