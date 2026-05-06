@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-packages=("lua" "neovim" "swaync" "swaylock" "grimblast" "grim" "mpv" "waybar" "wofi" "kitty" "hypridle" "ripgrep" "nodejs" "npm" "hyprpicker" "nautilus" "discord" "proton-vpn-gtk-app" "veracrypt" "catppuccin-gtk-theme-mocha" "cronie" "pavucontrol")
+packages=("lua" "neovim" "swaync" "swaylock" "grimblast" "grim" "mpv" "waybar" "wofi" "kitty" "hypridle" "ripgrep" "nodejs" "npm" "hyprpicker" "nautilus" "discord" "proton-vpn-gtk-app" "veracrypt" "catppuccin-gtk-theme-mocha" "cronie" "pavucontrol" "pacman-contrib")
 configs=("hypr" "kitty" "mpv" "swaylock" "swaync" "waybar" "wofi")
 
 set -euo pipefail
@@ -72,6 +72,31 @@ install_jetbrains_nerd_font() {
     echo "✔ JetBrainsMono Nerd Font installed successfully (${version})."
 }
 
+setup_cron() {
+    local weather_job="*/10 * * * * $HOME/.config/hypr/scripts/weather.sh"
+    local updates_job="0 */2 * * * $HOME/.config/hypr/scripts/get-updates.sh"
+
+    echo "➜ Setting up cron jobs..."
+
+    local current_crontab
+    current_crontab=$(crontab -l 2>/dev/null)
+
+    if echo "$current_crontab" | grep -qF "weather.sh"; then
+        echo "✔ Weather cron job already exists, skipping."
+    else
+        (echo "$current_crontab"; echo "$weather_job") | crontab -
+        echo "✔ Weather cron job added."
+    fi
+
+    current_crontab=$(crontab -l 2>/dev/null)
+
+    if echo "$current_crontab" | grep -qF "get-updates.sh"; then
+        echo "✔ Updates cron job already exists, skipping."
+    else
+        (echo "$current_crontab"; echo "$updates_job") | crontab -
+        echo "✔ Updates cron job added."
+    fi
+}
 sudo pacman -Syu --noconfirm
 ensure_yay
 
@@ -110,3 +135,4 @@ if [ ! -d "$HOME/.config/nvim" ]; then
   npm install -g tree-sitter-cli
 fi
 
+setup_cron
