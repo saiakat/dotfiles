@@ -1,5 +1,4 @@
-@import "mocha.css";
-@import "moon.css";
+@import "theme.css";
 
 * {
     font-family: "JetBrainsMono Nerd Font";
@@ -55,9 +54,15 @@ window#waybar {
 #clock:hover,
 #custom-weather:hover,
 #custom-wp-next:hover,
+#custom-updates:hover,
 #pulseaudio:hover {
   background-color: @mantle;
-  color: @textmoon;
+  color: @pink;
+}
+
+#custom-notification.notification,
+#custom-notification.dnd-notification {
+    color: @red;
 }
 
 #custom-notification:hover {

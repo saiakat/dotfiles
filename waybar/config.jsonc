@@ -68,7 +68,9 @@
     "format": "󰅢 {}",
     "interval": 3600,
     "exec": "cat ~/.cache/waybar/updates",
-    "tooltip-format": "{} updates available"
+    "tooltip-format": "{} updates available",
+    "on-click": "pkill -RTMIN+9 waybar",
+    "signal": 9
   },
   "custom/holidays": {
     "return-type": "json",
