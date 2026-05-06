@@ -66,7 +66,7 @@
   },
   "custom/updates": {
     "format": "󰅢 {}",
-    "interval": "once",
+    "interval": 3600,
     "exec": "cat ~/.cache/waybar/updates",
     "tooltip-format": "{} updates available"
   },
