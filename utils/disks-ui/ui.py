@@ -91,6 +91,6 @@ def on_activate(app):
     win.set_child(outer_box)
     win.present()
 
-app = Gtk.Application(application_id='org.gtk.Example')
+app = Gtk.Application(application_id='disk-ui')
 app.connect('activate', on_activate)
 app.run(None)
