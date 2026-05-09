@@ -152,14 +152,12 @@ class MainWindow(QMainWindow):
         h_layout = QHBoxLayout(scroll_contents)
         h_layout.setContentsMargins(16, 16, 16, 16)
         h_layout.setSpacing(12)
-        h_layout.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignTop)
-
         for mount_name, info in get_disk_space().items():
             entry = DiskEntry(mount_name, info)
             h_layout.addWidget(entry)
 
-        h_layout.addStretch()
         scroll.setWidget(scroll_contents)
+        h_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
         outer_layout.addWidget(scroll)
 
         btn = QPushButton('Close')
@@ -174,8 +172,8 @@ class MainWindow(QMainWindow):
         btn_layout.addWidget(btn)
         outer_layout.addWidget(btn_wrapper)
 
-
 app = QApplication(sys.argv)
+app.setApplicationName("disk-space-info")
 window = MainWindow()
 window.show()
 sys.exit(app.exec())
