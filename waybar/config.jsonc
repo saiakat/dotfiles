@@ -11,10 +11,10 @@
     // "custom/disk-root",
     // "custom/disk-home",
     // "custom/wp-next"
-    // "network",
     // "temperature",
+    // "cpu",
+    "network",
     "custom/updates",
-    "cpu",
     "memory",
     "pulseaudio",
   ],
@@ -27,15 +27,13 @@
   ],
     "clock": {
         "format": " {:%a %d %H:%M}",
-        "tooltip-format": "<big>{:%a %d %Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%d.%m.%Y}"
+        "tooltip-format": "<big>{:%a %d %Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
   "network": {
-    "format-wifi": "{essid} ({signalStrength}%)  ",
-    "format-ethernet": " {ipaddr}/{cidr}",
-    "format-linked": " {ifname} (No IP)",
+    "format-ethernet": "<span font-family='JetBrainsMono Nerd Font Mono' font='18'></span>",
+    "format-linked": "<span font-family='JetBrainsMono Nerd Font Mono' font='18'></span>",
     "format-disconnected": "  Disconnected",
-    "tooltip-format-wifi": "Signal Strenght: {signalStrength}%"
+    "tooltip-format-ethernet": "{ipaddr}/{cidr}",
   },
   "pulseaudio": {
       "format": "{icon} {volume}%",
@@ -67,10 +65,10 @@
     "max-length": 20
   },
   "custom/updates": {
-    "format": "󰅢 {}",
+    "return-type": "json",
+    "format": "<span font-family='JetBrainsMono Nerd Font Mono' font='18'>{}</span>",
     "interval": 3600,
     "exec": "cat ~/.cache/waybar/updates",
-    "tooltip-format": "{} updates available",
     "on-click": "pkill -RTMIN+9 waybar",
     "signal": 9
   },
@@ -95,7 +93,7 @@
   "custom/disks": {
     "return-type": "json",
     "format": "<span font-family='JetBrainsMono Nerd Font Mono' font='18'></span>",
-    "interval": 900,
+    "format-alt": "{}",
     "exec": "~/.config/waybar/scripts/get-storage.sh",
     "tooltip": true
   },

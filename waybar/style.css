@@ -98,7 +98,7 @@ window#waybar {
 #workspaces button.active {
     color: @mauve;
     border: 1.5px solid @mauve;
-    padding: 0 12px;
+    padding: 0 1em;
 }
 
 #workspaces button.urgent {
@@ -112,7 +112,14 @@ tooltip {
   color: @textmoon;
 }
 
-#temperature.critical {
-    color: @love;
+#custom-disks,
+#pulseaudio,
+#custom-notification {
+  transition: all 100ms ease-in-out;
 }
 
+#custom-disks:hover,
+#pulseaudio:hover,
+#custom-notification:hover {
+  padding: 0 1.5em;
+}

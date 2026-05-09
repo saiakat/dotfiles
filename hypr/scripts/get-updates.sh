@@ -9,4 +9,8 @@ else
 fi
 
 updates=$(checkupdates | wc -l)
-echo $updates > $FILE_PATH
+if [ $updates == 0 ]; then
+  echo "{\"text\": \"󰅠\", \"tooltip\": \"All packages up to date\"}" > $FILE_PATH
+else
+  echo "{\"text\": \"󰅢\", \"tooltip\": \"$updates Updates available\"}" > $FILE_PATH
+fi
