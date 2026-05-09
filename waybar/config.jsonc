@@ -1,4 +1,5 @@
 {
+  "layer": "top",
   "position": "top",
   "height": 60, 
   "output": ["*"],
@@ -6,22 +7,23 @@
   "margin-left": 20,
   "margin-right": 20,
   "modules-left": [
-    "clock",
-    "custom/weather",
-    "custom/holidays",
+    "custom/disks",
+    // "custom/disk-root",
+    // "custom/disk-home",
+    // "custom/wp-next"
+    // "network",
+    // "temperature",
+    "custom/updates",
+    "cpu",
+    "memory",
     "pulseaudio",
   ],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": [
-    // "custom/wp-next"
-    // "network",
-    // "temperature",
-    // "cpu",
-    "custom/updates",
-    "custom/disk-root",
-    "custom/disk-home",
-    "memory",
-    "custom/notification"
+    "clock",
+    "custom/weather",
+    "custom/holidays",
+    "custom/notification",
   ],
     "clock": {
         "format": " {:%a %d %H:%M}",
@@ -80,15 +82,22 @@
   },
   "custom/disk-home": {
     "format": " {}",
-    "interval": 30,
+    "interval": 900,
     "exec": "df -h /home | awk 'NR==2 {print $3 \"  \" $2}'",
     "tooltip-format": "Used: {}\nPartition: /home"
   },
   "custom/disk-root": {
     "format": " {}",
-    "interval": 30,
+    "interval": 900,
     "exec": "df -h / | awk 'NR==2 {print $3 \"  \" $2}'",
     "tooltip-format": "Used: {}\nPartition: /root"
+  },
+  "custom/disks": {
+    "return-type": "json",
+    "format": "<span font-family='JetBrainsMono Nerd Font Mono' font='18'></span>",
+    "interval": 900,
+    "exec": "~/.config/waybar/scripts/get-storage.sh",
+    "tooltip": true
   },
   "custom/notification": {
       "tooltip": false,

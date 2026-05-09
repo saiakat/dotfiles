@@ -1,23 +1,26 @@
 @import "theme.css";
 
 * {
-    font-family: "JetBrainsMono Nerd Font";
-    min-height: 0;
-    margin: 0;
-    padding: 0;
-    font-size: 13px;
-    font-weight: bold;
+  font-family: "JetBrainsMono Nerd Font";
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.modules-right,
+.modules-left {
+  padding: 0 0.6em;
+  border-radius: 30px;
+  background: @mantle;
 }
 
 window#waybar {
-    background: transparent;
-    color: @overlay0;
-    transition-property: background-color;
-    transition-duration: 0.1s;
+  background: transparent;
 }
 
 /* ── Shalove pill style ── */
-#window,
 #workspaces,
 #clock,
 #pulseaudio,
@@ -28,36 +31,35 @@ window#waybar {
 #custom-updates,
 #custom-holidays,
 #custom-disk-root,
+#custom-disks,
 #custom-notification,
 #custom-weather,
 #custom-wp-next,
 #custom-disk-home {
-    margin: 10px 6px;
-    background-color: @basemoon;
-    padding: 0 16px;
-    border-radius: 30px;
-    border: 1px solid @flamingo; 
-    color: @iris;
+  margin: 0.9em 0.3em;
+  background-color: @surface;
+  padding: 0 1.3em;
+  border-radius: 30px;
+  border: 1px solid @highlightlow; 
+  color: @iris;
 }
 
-/* ── Per-module colors ── */
-/* #window       { color: @blue; } */
-/* #clock        { color: @maroon; } */
-/* #pulseaudio   { color: @blue; } */
-/* #network      { color: @yellow; } */
-/* #cpu          { color: @peach;} */
-/* #temperature  { color: @sky; } */
-/* #memory       { color: @flamingo; } */
-/* #custom-vpn   { color: @lavender; } */
-
-#custom-notification:hover,
 #clock:hover,
+#pulseaudio:hover,
+#custom-disks:hover,
+#network:hover,
+#cpu:hover,
+#temperature:hover,
+#memory:hover,
+#custom-updates:hover,
+#custom-holidays:hover,
+#custom-disk-root:hover,
 #custom-weather:hover,
 #custom-wp-next:hover,
-#custom-updates:hover,
-#pulseaudio:hover {
-  background-color: @mantle;
+#custom-disk-home:hover {
+  background-color: @crust;
   color: @pink;
+  border-color: @pink;
 }
 
 #custom-notification.notification,
@@ -66,35 +68,31 @@ window#waybar {
 }
 
 #custom-notification:hover {
+  background-color: @crust;
   color: @love;
+  border-color: @love;
 }
 
 #workspaces {
   background-color: @mantle;
   border: none;
-  padding: 0 10px;
+  padding: 0 0.7em;
   /* background: transparent; */
-}
-button {
-    box-shadow: inset 0 -3px transparent;
-    border: none;
-    border-radius: 0px;
 }
 
 #workspaces button {
-    margin: 10px 2.5px;
-    background-color: @overlay;
-    border: 1px solid @highlightlow; 
-    border-radius: 10px;
-    transition: all 200ms ease-in-out;
-    padding: 0 5px;
-    color: @overlay;
-    /* color: @lavender; */
+  margin: 0.7em 0.2em;
+  background-color: @overlay;
+  border: 1px solid @highlightlow; 
+  border-radius: 10px;
+  transition: all 200ms ease-in-out;
+  padding: 0 5px;
+  color: @overlay;
 }
 
 #workspaces button:hover {
-    background: inherit;
-    color: @mauve;
+  background: @crust;
+  color: @mauve;
 }
 
 #workspaces button.active {
@@ -109,10 +107,12 @@ button {
 }
 
 tooltip {
-  background-color: @base;
+  border: 1px solid @pink;
+  background-color: @surface;
   color: @textmoon;
 }
 
 #temperature.critical {
     color: @love;
 }
+
