@@ -36,10 +36,10 @@ def open_in_nautilus(mountpoint):
 class DiskEntry(QWidget):
     BG_NORMAL      = QColor('#2a273f')
     BG_HOVER       = QColor('#181825')
-    BORDER_NORMAL  = QColor('#f2cdcd')
-    BORDER_HOVER   = QColor('#f5c2e7')
-    TEXT_NORMAL    = '#cba6f7'
-    TEXT_HOVER     = '#f5c2e7'
+    BORDER_NORMAL  = QColor('#44415a')
+    BORDER_HOVER   = QColor('#f2cdcd')
+    TEXT_NORMAL    = '#e0def4'
+    TEXT_HOVER     = '#e0def4'
     BORDER_WIDTH   = 1.5
     BORDER_RADIUS  = 4.0
 
@@ -71,9 +71,9 @@ class DiskEntry(QWidget):
     def _apply_label_styles(self, color):
         font = '"JetBrainsMono Nerd Font Mono"'
         base = f'color: {color}; background: transparent; font-family: {font}; border: none; font-size: 15px;'
-        self.title.setStyleSheet(base + ' font-weight: bold;')
+        self.title.setStyleSheet(base + ' font-weight: 900; padding: 0.1em; border-bottom: 1.5px solid #908caa;')
         for label in self.labels:
-            label.setStyleSheet(base + ' font-weight: bold; padding: 0.5em 1em;')
+            label.setStyleSheet(base + ' font-weight: bold; padding: 0.1em 1em; border-bottom: 1px solid #908caa;')
 
     def paintEvent(self, event):
         painter = QPainter(self)
