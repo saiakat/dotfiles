@@ -13,9 +13,9 @@
 .modules-right,
 .modules-left {
   border-radius: 30px;
-  background: @base;
+  background: @mantle;
   padding: 0.6em 0.4em;
-  border: .5px solid @overlay;
+  border: 1.2px solid @foam;
 }
 
 window#waybar {
@@ -39,11 +39,11 @@ window#waybar {
 #custom-wp-next,
 #custom-disk-home {
   margin: 0 0.3em;
-  background-color: @crust;
+  background-color: @surface;
   padding: 0 1.4em;
   border-radius: 30px;
-  border: 1px solid @highlightlow; 
-  color: @iris;
+  border: 1px solid @highlightmed; 
+  color: @pine;
 }
 
 #clock:hover,
@@ -60,49 +60,49 @@ window#waybar {
 #custom-wp-next:hover,
 #custom-disk-home:hover {
   border-width: 1.5px;
-  background-color: @iris;
-  color: @crust;
-  border-color: @pink;
+  background-color: @basemoon;
+  color: @foam;
+  border-color: @foam;
 }
 
 #custom-notification.notification,
 #custom-notification.dnd-notification {
-    color: @red;
+    color: @gold;
 }
 
 #custom-notification:hover {
   border-width: 1.5px;
   background-color: @crust;
-  color: @love;
-  border-color: @love;
+  color: @gold;
+  border-color: @gold;
 }
 
 #workspaces {
   margin: 0.65em 0.3em;
-  background-color: @base;
-  border: none;
+  background-color: @mantle;
+  border: 1.2px solid @foam;
   padding: 0 0.7em;
   /* background: transparent; */
 }
 
 #workspaces button {
   margin: 0.6em 0.2em;
-  background-color: @mantle;
-  border: 1px solid @surface1; 
+  background-color: @overlay;
+  border: 1px solid @highlightlow; 
   border-radius: 10px;
   transition: all 200ms ease-in-out;
   padding: 0 5px;
-  color: @mantle;
+  color: @overlay;
 }
 
 #workspaces button:hover {
-  background: @crust;
-  color: @mauve;
+  background: @basemoon;
+  color: @foam;
 }
 
 #workspaces button.active {
-    color: @mauve;
-    border: 1.5px solid @mauve;
+    color: @pine;
+    border: 1.3px solid @pine;
     padding: 0 1em;
 }
 
@@ -112,9 +112,9 @@ window#waybar {
 }
 
 tooltip {
-  border: 1px solid @pink;
+  border: 1px solid @foam;
   background-color: @surface;
-  color: @textmoon;
+  color: @pine;
 }
 
 #custom-disks,

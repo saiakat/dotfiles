@@ -20,6 +20,14 @@ function M.change_wall (file)
   return 0, nil
 end
 
+local function change_styles ()
+  local style = vars.waybar_styles[2]
+  if vars.current_cache == 'city' then
+    style = vars.waybar_styles[1]
+  end
+  os.execute('~/.config/waybar/scripts/change-styles.sh ' .. style)
+end
+
 function M.next_wall (direction)
   direction = direction or helpers.get_value_if_in_table(arg, {'next', 'n', 'prev', 'pr'}, 0)
   local res, err
@@ -161,6 +169,8 @@ function M.set_updated_cache_wallpaper ()
   if res == 1 then
     return helpers.pass_err(err)
   end
+
+  change_styles()
 
   res, err = cache.get_files()
   if res == 1 then
