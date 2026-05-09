@@ -1,8 +1,13 @@
-import gi
-gi.require_version('Gtk', '4.0')
-from gi.repository import Gtk, Gdk
+import sys
 import psutil
 import subprocess
+from PyQt6.QtWidgets import (
+    QApplication, QMainWindow, QWidget, QHBoxLayout,
+    QVBoxLayout, QLabel, QPushButton, QScrollArea
+)
+from PyQt6.QtCore import Qt
+from PyQt6.QtGui import QCursor, QPainter, QColor, QPen
+from PyQt6.QtCore import QRectF
 
 def get_disk_space():
     partitions = psutil.disk_partitions()
@@ -13,16 +18,12 @@ def get_disk_space():
                 continue
             usage = psutil.disk_usage(partition.mountpoint)
             name = f'Mount: {partition.mountpoint}'
-            total = f'  Total: {usage.total / (1024**3):.2f} GB'
-            used = f'  Used:  {usage.used / (1024**3):.2f} GB'
-            free = f'  Free:  {usage.free / (1024**3):.2f} GB'
-            percentage = f'  Percent Used: {usage.percent}%'
             disk_table[name] = {
                 'mountpoint': partition.mountpoint,
-                'total': total,
-                'used': used,
-                'free': free,
-                'percentage': percentage,
+                'total': f'Total: {usage.total / (1024**3):.2f} GB',
+                'used':  f'Used:  {usage.used  / (1024**3):.2f} GB',
+                'free':  f'Free:  {usage.free  / (1024**3):.2f} GB',
+                'percentage': f'Percent Used: {usage.percent}%',
             }
         except PermissionError:
             continue
@@ -31,96 +32,150 @@ def get_disk_space():
 def open_in_nautilus(mountpoint):
     subprocess.Popen(['nautilus', mountpoint])
 
-def on_activate(app):
-    css_provider = Gtk.CssProvider()
-    css_provider.load_from_data(b"""
-        .disk-entry {
-            font-family: "JetBrainsMono Nerd Font Mono";
-            border: 1.5px solid #f2cdcd;
-            border-radius: 4px;
-            padding: 12px;
-            color: #cba6f7;
-            background: #2a273f;
-        }
-        .disk-entry:hover {
-            background: #181825;
-            border-color: #f5c2e7;
-            color: #f5c2e7;
-        }
-        .disk-entry-title {
-            font-weight: bold;
-            margin-bottom: 4px;
-        }
-        .disk-label {
-            font-weight: bold;
-            margin-top: 8px;
-            margin-bottom: 8px;
-            border-bottom: 1px solid black;
-        }
-    """)
-    Gtk.StyleContext.add_provider_for_display(
-        Gdk.Display.get_default(),
-        css_provider,
-        Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-    )
 
-    win = Gtk.ApplicationWindow(application=app)
-    win.set_title('Disk Space Info')
-    win.set_default_size(600, 200)
+class DiskEntry(QWidget):
+    BG_NORMAL      = QColor('#2a273f')
+    BG_HOVER       = QColor('#181825')
+    BORDER_NORMAL  = QColor('#f2cdcd')
+    BORDER_HOVER   = QColor('#f5c2e7')
+    TEXT_NORMAL    = '#cba6f7'
+    TEXT_HOVER     = '#f5c2e7'
+    BORDER_WIDTH   = 1.5
+    BORDER_RADIUS  = 4.0
 
-    outer_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
+    def __init__(self, mount_name, info):
+        super().__init__()
+        self.mountpoint = info['mountpoint']
+        self._hovered = False
+        self.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.setAttribute(Qt.WidgetAttribute.WA_Hover)
 
-    scroll = Gtk.ScrolledWindow()
-    scroll.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.NEVER)
-    scroll.set_vexpand(True)
+        layout = QVBoxLayout()
+        layout.setSpacing(8)
+        layout.setContentsMargins(12, 12, 12, 12)
+        self.setLayout(layout)
 
-    box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
-    box.set_margin_top(16)
-    box.set_margin_bottom(16)
-    box.set_margin_start(16)
-    box.set_margin_end(16)
+        self.title = QLabel(mount_name)
+        self.title.setObjectName('diskEntryTitle')
+        layout.addWidget(self.title)
 
-    disk_table = get_disk_space()
-
-    for mount_name, info in disk_table.items():
-        entry_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
-        entry_box.set_cursor(Gdk.Cursor.new_from_name('pointer'))
-        entry_box.add_css_class('disk-entry')
-
-        title = Gtk.Label(label=mount_name)
-        title.set_xalign(0)
-        title.add_css_class('disk-entry-title')
-        entry_box.append(title)
-
+        self.labels = []
         for key in ('total', 'used', 'free', 'percentage'):
-            label = Gtk.Label(label=info[key])
-            label.set_xalign(0)
-            label.add_css_class('disk-label')
-            entry_box.append(label)
+            label = QLabel(info[key])
+            label.setObjectName('diskLabel')
+            layout.addWidget(label)
+            self.labels.append(label)
 
-        # Attach click gesture to open Nautilus
-        mountpoint = info['mountpoint']
-        gesture = Gtk.GestureClick.new()
-        gesture.connect('released', lambda gest, n, x, y, mp=mountpoint: open_in_nautilus(mp))
-        entry_box.add_controller(gesture)
+        self._apply_label_styles(self.TEXT_NORMAL)
 
-        box.append(entry_box)
+    def _apply_label_styles(self, color):
+        font = '"JetBrainsMono Nerd Font Mono"'
+        base = f'color: {color}; background: transparent; font-family: {font}; border: none; font-size: 15px;'
+        self.title.setStyleSheet(base + ' font-weight: bold;')
+        for label in self.labels:
+            label.setStyleSheet(base + ' font-weight: bold; padding: 0.5em 1em;')
 
-    scroll.set_child(box)
-    outer_box.append(scroll)
+    def paintEvent(self, event):
+        painter = QPainter(self)
+        painter.setRenderHint(QPainter.RenderHint.Antialiasing)
 
-    btn = Gtk.Button(label='Close')
-    btn.set_margin_top(4)
-    btn.set_margin_bottom(12)
-    btn.set_margin_start(16)
-    btn.set_margin_end(16)
-    btn.set_cursor(Gdk.Cursor.new_from_name('pointer'))
-    btn.connect('clicked', lambda x: win.close())
-    outer_box.append(btn)
+        bg     = self.BG_HOVER    if self._hovered else self.BG_NORMAL
+        border = self.BORDER_HOVER if self._hovered else self.BORDER_NORMAL
 
-    win.set_child(outer_box)
-    win.present()
+        pen = QPen(border)
+        pen.setWidthF(self.BORDER_WIDTH)
+        painter.setPen(pen)
+        painter.setBrush(bg)
 
-app = Gtk.Application(application_id='org.gtk.Example')
-app.connect('activate', on_activate)
-app.run(None)
+        # Inset rect so border isn't clipped at edges
+        half = self.BORDER_WIDTH / 2
+        rect = QRectF(self.rect()).adjusted(half, half, -half, -half)
+        painter.drawRoundedRect(rect, self.BORDER_RADIUS, self.BORDER_RADIUS)
+
+    def enterEvent(self, event):
+        self._hovered = True
+        self._apply_label_styles(self.TEXT_HOVER)
+        self.update()
+
+    def leaveEvent(self, event):
+        self._hovered = False
+        self._apply_label_styles(self.TEXT_NORMAL)
+        self.update()
+
+    def mousePressEvent(self, event):
+        if event.button() == Qt.MouseButton.LeftButton:
+            open_in_nautilus(self.mountpoint)
+
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle('Disk Space Info')
+        self.resize(600, 220)
+        self.setStyleSheet("""
+            QMainWindow, QWidget {
+                background: #1e1e2e;
+            }
+            QPushButton#closeBtn {
+                background: #2a273f;
+                border: 1.5px solid #f2cdcd;
+                border-radius: 4px;
+                color: #cba6f7;
+                font-family: "JetBrainsMono Nerd Font Mono";
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+            QPushButton#closeBtn:hover {
+                background: #181825;
+                border-color: #f5c2e7;
+                color: #f5c2e7;
+            }
+            QScrollArea, QScrollArea > QWidget > QWidget {
+                background: #1e1e2e;
+                border: none;
+            }
+        """)
+
+        central = QWidget()
+        self.setCentralWidget(central)
+
+        outer_layout = QVBoxLayout(central)
+        outer_layout.setContentsMargins(0, 0, 0, 0)
+        outer_layout.setSpacing(8)
+
+        scroll = QScrollArea()
+        scroll.setWidgetResizable(True)
+        scroll.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
+
+        scroll_contents = QWidget()
+        h_layout = QHBoxLayout(scroll_contents)
+        h_layout.setContentsMargins(16, 16, 16, 16)
+        h_layout.setSpacing(12)
+        h_layout.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignTop)
+
+        for mount_name, info in get_disk_space().items():
+            entry = DiskEntry(mount_name, info)
+            h_layout.addWidget(entry)
+
+        h_layout.addStretch()
+        scroll.setWidget(scroll_contents)
+        outer_layout.addWidget(scroll)
+
+        btn = QPushButton('Close')
+        btn.setObjectName('closeBtn')
+        btn.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        btn.setFixedHeight(36)
+        btn.clicked.connect(self.close)
+
+        btn_wrapper = QWidget()
+        btn_layout = QHBoxLayout(btn_wrapper)
+        btn_layout.setContentsMargins(16, 4, 16, 12)
+        btn_layout.addWidget(btn)
+        outer_layout.addWidget(btn_wrapper)
+
+
+app = QApplication(sys.argv)
+window = MainWindow()
+window.show()
+sys.exit(app.exec())

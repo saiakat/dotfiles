@@ -6,7 +6,7 @@ else
   python -m venv ~/dotfiles/utils/venv
 fi
 
-py_deps=("requests" "dotenv")
+py_deps=("requests" "dotenv" "PyQt6")
 
 source ~/utils/venv/bin/activate
 
