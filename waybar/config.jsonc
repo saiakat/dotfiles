@@ -93,7 +93,7 @@
   "custom/disks": {
     "return-type": "json",
     "format": "<span font-family='JetBrainsMono Nerd Font Mono' font='18'></span>",
-    "format-alt": "{}",
+    "on-click": "~/.config/waybar/scripts/disks-ui.sh",
     "exec": "~/.config/waybar/scripts/get-storage.sh",
     "tooltip": true
   },
