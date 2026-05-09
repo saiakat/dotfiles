@@ -93,9 +93,11 @@
   "custom/disks": {
     "return-type": "json",
     "format": "<span font-family='JetBrainsMono Nerd Font Mono' font='18'></span>",
-    "on-click": "~/.config/waybar/scripts/disks-ui.sh",
+    "on-click": "pkill -RTMIN+10 waybar && ~/.config/waybar/scripts/disks-ui.sh",
     "exec": "~/.config/waybar/scripts/get-storage.sh",
-    "tooltip": true
+    "tooltip": true,
+    "tooltip-format": "{}",
+    "signal": 10
   },
   "custom/notification": {
       "tooltip": false,
