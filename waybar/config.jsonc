@@ -1,9 +1,10 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 60, 
+  "height": 40, 
   "output": ["*"],
   "margin-top": 10,
+  "margin-bottom": 0,
   "margin-left": 20,
   "margin-right": 20,
   "modules-left": [
@@ -30,14 +31,14 @@
         "tooltip-format": "<big>{:%a %d %Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
   "network": {
-    "format-ethernet": "<span font-family='JetBrainsMono Nerd Font Mono' font='18'></span>",
-    "format-linked": "<span font-family='JetBrainsMono Nerd Font Mono' font='18'></span>",
+    "format-ethernet": "<span font-family='JetBrainsMono Nerd Font Mono' font='17'></span>",
+    "format-linked": "<span font-family='JetBrainsMono Nerd Font Mono' font='17'></span>",
     "format-disconnected": "  Disconnected",
     "tooltip-format-ethernet": "{ipaddr}/{cidr}",
   },
   "pulseaudio": {
       "format": "{icon} {volume}%",
-      "format-muted": "<span font-family='JetBrainsMono Nerd Font Mono' font='18'></span>",
+      "format-muted": "<span font-family='JetBrainsMono Nerd Font Mono' font='17'></span>",
       "format-icons": {
           "default": ["", "", " "]
       },
@@ -61,12 +62,9 @@
     "all-outputs": true,
     "warp-on-scroll": false
   },
-  "hyprland/window": {
-    "max-length": 20
-  },
   "custom/updates": {
     "return-type": "json",
-    "format": "<span font-family='JetBrainsMono Nerd Font Mono' font='18'>{}</span>",
+    "format": "<span font-family='JetBrainsMono Nerd Font Mono' font='17'>{}</span>",
     "interval": 3600,
     "exec": "cat ~/.cache/waybar/updates",
     "on-click": "pkill -RTMIN+9 waybar",
@@ -92,7 +90,7 @@
   },
   "custom/disks": {
     "return-type": "json",
-    "format": "<span font-family='JetBrainsMono Nerd Font Mono' font='18'></span>",
+    "format": "<span font-family='JetBrainsMono Nerd Font Mono' font='17'></span>",
     "on-click": "pkill -RTMIN+10 waybar && ~/.config/waybar/scripts/disks-ui.sh",
     "exec": "~/.config/waybar/scripts/get-storage.sh",
     "tooltip": true,
@@ -101,7 +99,7 @@
   },
   "custom/notification": {
       "tooltip": false,
-      "format": "<span font-family='JetBrainsMono Nerd Font Mono' font='18'>{icon}</span>",
+      "format": "<span font-family='JetBrainsMono Nerd Font Mono' font='17'>{icon}</span>",
       "format-icons": {
           "notification": "",
           "none": "",

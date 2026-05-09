@@ -7,13 +7,15 @@
   padding: 0;
   font-size: 13px;
   font-weight: bold;
+  min-height: 0;
 }
 
 .modules-right,
 .modules-left {
-  padding: 0 0.6em;
   border-radius: 30px;
   background: @mantle;
+  padding: 0.6em 0.4em;
+  border: .5px solid @overlay;
 }
 
 window#waybar {
@@ -36,9 +38,9 @@ window#waybar {
 #custom-weather,
 #custom-wp-next,
 #custom-disk-home {
-  margin: 0.9em 0.3em;
+  margin: 0 0.3em;
   background-color: @surface;
-  padding: 0 1.3em;
+  padding: 0 1.4em;
   border-radius: 30px;
   border: 1px solid @highlightlow; 
   color: @iris;
@@ -76,6 +78,7 @@ window#waybar {
 }
 
 #workspaces {
+  margin: 0.65em 0.3em;
   background-color: @mantle;
   border: none;
   padding: 0 0.7em;
@@ -83,7 +86,7 @@ window#waybar {
 }
 
 #workspaces button {
-  margin: 0.7em 0.2em;
+  margin: 0.6em 0.2em;
   background-color: @overlay;
   border: 1px solid @highlightlow; 
   border-radius: 10px;
@@ -123,5 +126,5 @@ tooltip {
 #custom-disks:hover,
 #pulseaudio:hover,
 #custom-notification:hover {
-  padding: 0 1.5em;
+  padding: 0 1.6em;
 }
