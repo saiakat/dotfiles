@@ -8,10 +8,10 @@ else
   echo "Created: $FILE_PATH"
 fi
 # 1. Path to the activation script
-source ~/utils/venv/bin/activate
+source ~/dotfiles/utils/venv/bin/activate
 
 # 2. Run your script (it will now use the venv's python)
-python ~/utils/get_holidays.py > $FILE_PATH
+python ~/dotfiles/utils/holidays/get_holidays.py > $FILE_PATH
 
 # 3. Optional: deactivate when finished
 deactivate

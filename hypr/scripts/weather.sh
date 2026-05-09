@@ -8,8 +8,8 @@ else
   echo "Created: $FILE_PATH"
 fi
 
-source ~/utils/venv/bin/activate
+source ~/dotfiles/utils/venv/bin/activate
 
-python ~/utils/weather.py > $FILE_PATH
+python ~/dotfiles/utils/weather/weather.py > $FILE_PATH
 
 deactivate
