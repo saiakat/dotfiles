@@ -57,6 +57,7 @@ window#waybar {
 #custom-weather:hover,
 #custom-wp-next:hover,
 #custom-disk-home:hover {
+  border-width: 1.5px;
   background-color: @crust;
   color: @pink;
   border-color: @pink;
@@ -68,6 +69,7 @@ window#waybar {
 }
 
 #custom-notification:hover {
+  border-width: 1.5px;
   background-color: @crust;
   color: @love;
   border-color: @love;
