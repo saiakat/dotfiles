@@ -15,7 +15,7 @@
   border-radius: 30px;
   background: @base;
   padding: 0.6em 0.4em;
-  border: .5px solid @overlay;
+  border: .5px solid black;
 }
 
 window#waybar {
@@ -61,8 +61,8 @@ window#waybar {
 #custom-disk-home:hover {
   border-width: 1.5px;
   background-color: @iris;
-  color: @crust;
-  border-color: @pink;
+  color: black;
+  border-color: @crust;
 }
 
 #custom-notification.notification,
@@ -80,7 +80,7 @@ window#waybar {
 #workspaces {
   margin: 0.65em 0.3em;
   background-color: @base;
-  border: none;
+  border: .5px solid black;
   padding: 0 0.7em;
   /* background: transparent; */
 }

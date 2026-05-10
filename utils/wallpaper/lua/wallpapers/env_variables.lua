@@ -14,7 +14,7 @@ return {
   current_cache = 'wallpapers',
   active_dir_cache = home .. '/.cache/walls/active',
   current_cache_index = 1,
-  waybar_styles = {'futuristic-city-foam-pine.css', 'style-dark-mauve-pink.css'},
+  waybar_styles = { default = 'default.css', city = 'city-foam-pine.css', not_city = 'dark-high-contrast.css'},
   wallpaper_dirs = {},
   wallpapers = {},
 }

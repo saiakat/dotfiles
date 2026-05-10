@@ -13,7 +13,7 @@
 .modules-right,
 .modules-left {
   border-radius: 30px;
-  background: @base;
+  background: @mantle;
   padding: 0.6em 0.4em;
   border: .5px solid @overlay;
 }
@@ -39,7 +39,7 @@ window#waybar {
 #custom-wp-next,
 #custom-disk-home {
   margin: 0 0.3em;
-  background-color: @crust;
+  background-color: @surface;
   padding: 0 1.4em;
   border-radius: 30px;
   border: 1px solid @highlightlow; 
@@ -60,8 +60,8 @@ window#waybar {
 #custom-wp-next:hover,
 #custom-disk-home:hover {
   border-width: 1.5px;
-  background-color: @iris;
-  color: @crust;
+  background-color: @crust;
+  color: @pink;
   border-color: @pink;
 }
 
@@ -79,7 +79,7 @@ window#waybar {
 
 #workspaces {
   margin: 0.65em 0.3em;
-  background-color: @base;
+  background-color: @mantle;
   border: none;
   padding: 0 0.7em;
   /* background: transparent; */
@@ -87,12 +87,12 @@ window#waybar {
 
 #workspaces button {
   margin: 0.6em 0.2em;
-  background-color: @mantle;
-  border: 1px solid @surface1; 
+  background-color: @overlay;
+  border: 1px solid @highlightlow; 
   border-radius: 10px;
   transition: all 200ms ease-in-out;
   padding: 0 5px;
-  color: @mantle;
+  color: @overlay;
 }
 
 #workspaces button:hover {
