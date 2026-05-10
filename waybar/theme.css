@@ -42,3 +42,44 @@
 @define-color base #1e1e2e;
 @define-color mantle #181825;
 @define-color crust #11111b;
+
+/* futuristic colors */
+@define-color bg_abyss     #020609;
+@define-color bg_void      #050A14;
+@define-color bg_surface   #0B1628;
+@define-color bg_panel     #101E35;
+@define-color bg_elevated  #162540;
+@define-color bg_float     #1E3050;
+
+@define-color cyan_dim     #003D47;
+@define-color cyan_muted   #006B7A;
+@define-color cyan_soft    #00AACC;
+@define-color accent_primary #00E5FF;
+@define-color cyan_bright  #66F0FF;
+
+@define-color teal_dim     #003D30;
+@define-color teal_muted   #006650;
+@define-color teal_soft    #00CC9A;
+@define-color accent_teal  #00FFC8;
+@define-color teal_bright  #80FFE0;
+
+@define-color violet_dim    #1A1040;
+@define-color violet_muted  #3B2D8A;
+@define-color accent_violet #7B61FF;
+@define-color violet_soft   #A990FF;
+@define-color violet_bright #D4C8FF;
+
+@define-color accent_danger    #FF3D6E;
+@define-color accent_warning   #FF8A3D;
+@define-color accent_success   #3DFFB0;
+@define-color accent_highlight #FFE03D;
+
+@define-color text_primary   #E8F4FF;
+@define-color text_secondary #7EAED4;
+@define-color text_tertiary  #3A6080;
+
+@define-color border       #1B3A52;
+@define-color border_hover #254D6A;
+
+@define-color overlay_cyan   rgba(0,229,255,0.13);
+@define-color overlay_violet rgba(123,97,255,0.13);

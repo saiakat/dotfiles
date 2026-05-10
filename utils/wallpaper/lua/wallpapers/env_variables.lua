@@ -11,7 +11,7 @@ M.wall_cache_default = M.cache_dir .. 'wallpapers/wallpapers'
 M.state_cache_default = M.cache_dir .. 'wallpapers/state'
 M.transition_cache_default = M.cache_dir .. 'wallpapers/transition'
 M.transition_default = ' --transition-type grow --transition-pos top-right --transition-duration 2 --transition-fps 180'
-M.waybar_styles = { default = 'default.css', city = 'city-foam-pine.css', not_city = 'dark-high-contrast.css'}
+M.waybar_styles = { default = 'default.css', city = 'future.css', not_city = 'dark-high-contrast.css'}
 M.current_cache = M.cache_name_default
 M.state_id = 1
 M.current_cache_index = 1
