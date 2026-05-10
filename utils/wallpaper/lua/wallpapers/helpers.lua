@@ -49,6 +49,17 @@ function M.write_table_to_file (tab, file)
   end
 end
 
+function M.execute_arbitrary (fns)
+  local err
+  for _, fn in ipairs(fns) do
+    __, err = fn()
+    if err then
+      M.pass_err(err)
+    end
+  end
+  return 0, nil
+end
+
 function M.help()
   print([[
 Usage: walls.sh <command> [options]
@@ -86,6 +97,7 @@ Commands:
       Options:
         -d, --directory       Switch to a specific wallpaper directory
         --silent              Switch directory without changing the wallpaper
+        --skip-default        Skips the default wallpaper directory (wallpapers)
 
   h,  help                    Show this help message
 ]])

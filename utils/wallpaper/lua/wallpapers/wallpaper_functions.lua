@@ -180,6 +180,13 @@ function M.set_updated_cache_wallpaper ()
     return helpers.pass_err(err)
   end
 
+  if helpers.includes(arg, '--skip-default') and vars.current_cache == vars.cache_name_default then
+    res, err = helpers.execute_arbitrary({cache.update_active, cache.load_caches})
+    if res == 1 then
+      helpers.pass_err(err)
+    end
+  end
+
   change_styles()
 
   res, err = cache.get_files()
