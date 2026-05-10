@@ -21,6 +21,14 @@ local function load_wallpaper_dirs ()
   end
 end
 
+function M.get_prev_cache_entry (cache, id)
+  local prev_id = id - 1
+  if prev_id < 1 then
+    prev_id = #cache
+  end
+  return cache[prev_id]
+end
+
 function M.delete_cache_entry ()
   local dir_name = helpers.get_value_if_in_table(arg, {'r', 'remove'}, 1)
   if not dir_name then
@@ -52,9 +60,9 @@ end
 
 function M.load_caches ()
   load_wallpaper_dirs()
-  local id_file, err2 = io.open(vars.active_dir_cache, 'r')
+  local id_file, err= io.open(vars.active_dir_cache, 'r')
   if not id_file then
-    return helpers.pass_err(err2)
+    return helpers.pass_err(err)
   end
   vars.current_cache_index = math.tointeger(id_file:read('*all')) or 1
   id_file:close()
@@ -83,6 +91,7 @@ local function load_and_update_cached_id ()
   end
   id_file:write(tostring(next_id))
   id_file:close()
+
   return 0, nil
 end
 
@@ -290,11 +299,11 @@ function M.get_files ()
 end
 
 function M.change_cached_transition (transition)
-  local transition_cache = vars.cache_dir .. vars.current_cache .. '/transition'
+  transition = transition or helpers.get_value_if_in_table(arg, {'t'}, 1)
   if not transition then
-    print("Attempted to change transition but none given")
-    return helpers.pass_err("Error: no transition given")
+    transition = vars.transition_default
   end
+  local transition_cache = vars.cache_dir .. vars.current_cache .. '/transition'
   transition_cache = transition_cache or vars.transition_cache_default
   local transition_file, err = io.open(transition_cache, 'w')
   if not transition_file then

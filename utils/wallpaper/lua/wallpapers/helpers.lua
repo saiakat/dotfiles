@@ -51,20 +51,44 @@ end
 
 function M.help()
   print([[
-Usage: lua wallpapers.lua <command> [args]
+Usage: walls.sh <command> [options]
 
 Commands:
-  n|pr, next|prev                                                 Change to the next or previous wallpaper
-  --> optional: (-t, --transition <transition effect>)
-  c, change <path>                                                Change to a specific wallpaper by path
-  s, slideshow <on|off> sleep <time between wallpapers>           Start or stop the slideshow and set timeout in seconds
-  --> optional: (-p, --path <path> -c, --continue -r --restart) 
-  p, populatecache                                                Populate the cache with wallpapers from ~/wallpapers
-  m, makecachefiles                                               Create the cache directory and files if they don't exist
-  t -t, --transition <transition effect)                          Change cached transition (awww img --help)
-  h, help                                                         Show this help message
+  n,  next                    Change to the next wallpaper
+  pr, prev                    Change to the previous wallpaper
+      Options:
+        -t, --transition      Use a specific transition effect (see: awww img --help)
+        --cache-transition    Cache the given transition for future use
+        -r, --restart         Restart from the first wallpaper
+
+  c,  change <path>           Change to a specific wallpaper by path
+      Options:
+        -t, --transition      Use a specific transition effect
+        --cache-transition    Cache the given transition for future use
+
+  s,  slideshow <on|off>      Start or stop the slideshow
+      Options:
+        sleep <seconds>       Time between wallpapers (default: 60)
+        -p, --path <path>     Use a specific wallpaper directory
+        -c, --continue        Keep the current position in the wallpaper list
+        -r, --restart         Restart from the first wallpaper
+
+  p,  populatecache           Populate the cache from ~/wallpapers
+      Options:
+        -p, --path <path>     Populate from a specific directory
+        -c, --continue        Keep the current position when repopulating
+
+  r,  remove <cache name>     Remove a wallpaper directory cache
+
+  t   <transition effect>     Set the cached transition effect
+
+  u,  update                  Switch to the next wallpaper directory and show its current wallpaper
+      Options:
+        -d, --directory       Switch to a specific wallpaper directory
+        --silent              Switch directory without changing the wallpaper
+
+  h,  help                    Show this help message
 ]])
 end
-
 
 return M

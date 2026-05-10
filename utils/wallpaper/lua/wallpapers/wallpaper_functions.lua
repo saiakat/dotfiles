@@ -20,20 +20,20 @@ function M.change_wall (file)
   return 0, nil
 end
 
-local function is_style_same (style)
-  local prev_id = vars.current_cache_index - 1
-  if prev_id < 1 then
-    prev_id = #vars.wallpaper_dirs
-  end
-  local prev_cache = vars.wallpaper_dirs[prev_id]
-  local prev_styles = vars.waybar_styles[prev_cache] or vars.waybar_styles['default']
-  return prev_styles == style
+local function get_style (key)
+  return vars.waybar_styles[key] or vars.waybar_styles['default']
+end
+
+local function is_style_same (style1, style2)
+  return style1 == style2
 end
 
 local function change_styles ()
-  local style = vars.waybar_styles[vars.current_cache]
-  style = style or vars.waybar_styles['default']
-  if is_style_same(style) then
+  local style = get_style(vars.current_cache)
+  local prev_cache = cache.get_prev_cache_entry(vars.wallpaper_dirs, vars.current_cache_index)
+  local prev_style = get_style(prev_cache)
+
+  if is_style_same(style, prev_style) then
     return
   end
   os.execute('~/.config/waybar/scripts/change-styles.sh ' .. style)
