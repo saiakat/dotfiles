@@ -37,6 +37,9 @@ local function change_styles ()
     return
   end
   os.execute('~/.config/waybar/scripts/change-styles.sh ' .. style)
+  if not os.execute('cp ~/.config/swaync/themes/' .. style .. ' ~/.config/swaync/style.css && killall swaync') then
+    os.execute('cp ~/.config/swaync/themes/default.css ~/.config/swaync/style.css && killall swaync')
+  end
 end
 
 function M.next_wall (direction)

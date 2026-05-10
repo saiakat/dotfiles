@@ -119,8 +119,8 @@ window#waybar {
 #custom-disks:hover,
 #pulseaudio:hover,
 #custom-notification:hover {
+  margin: 0 1em;
   padding: 0 1.6em;
-  /* border-radius: 13px; */
   background-color: @violet_dim;
   border-image: url("widget-border.svg") 12 fill / 12px;
   color: @accent_primary;

@@ -1,0 +1,85 @@
+/* rose-pine colors */
+@define-color love #eb6f92;
+@define-color gold #f6c177;
+@define-color rose #ea9a97;
+@define-color pine #3e8fb0;
+@define-color foam #9ccfd8;
+@define-color iris #c4a7e7;
+@define-color highlightlow #2a283e;
+@define-color highlightmed #44415a;
+@define-color highlighthigh #56526e;
+@define-color textmoon #e0def4;
+@define-color muted #6e6a86;
+@define-color subtle #a6adc8;
+@define-color basemoon #232136;
+@define-color surface #2a273f;
+@define-color overlay #393552;
+
+/* catppuccin colors */
+@define-color rosewater #f5e0dc;
+@define-color flamingo #f2cdcd;
+@define-color pink #f5c2e7;
+@define-color mauve #cba6f7;
+@define-color red #f38ba8;
+@define-color maroon #eba0ac;
+@define-color peach #fab387;
+@define-color yellow #f9e2af;
+@define-color green #a6e3a1;
+@define-color teal #94e2d5;
+@define-color sky #89dceb;
+@define-color sapphire #74c7ec;
+@define-color blue #89b4fa;
+@define-color lavender #b4befe;
+@define-color text #cdd6f4;
+@define-color subtext1 #bac2de;
+@define-color subtext0 #a6adc8;
+@define-color overlay2 #9399b2;
+@define-color overlay1 #7f849c;
+@define-color overlay0 #6c7086;
+@define-color surface2 #585b70;
+@define-color surface1 #45475a;
+@define-color surface0 #313244;
+@define-color base #1e1e2e;
+@define-color mantle #181825;
+@define-color crust #11111b;
+
+/* futuristic colors */
+@define-color bg_abyss     #020609;
+@define-color bg_void      #050A14;
+@define-color bg_surface   #0B1628;
+@define-color bg_panel     #101E35;
+@define-color bg_elevated  #162540;
+@define-color bg_float     #1E3050;
+
+@define-color cyan_dim     #003D47;
+@define-color cyan_muted   #006B7A;
+@define-color cyan_soft    #00AACC;
+@define-color accent_primary #00E5FF;
+@define-color cyan_bright  #66F0FF;
+
+@define-color teal_dim     #003D30;
+@define-color teal_muted   #006650;
+@define-color teal_soft    #00CC9A;
+@define-color accent_teal  #00FFC8;
+@define-color teal_bright  #80FFE0;
+
+@define-color violet_dim    #1A1040;
+@define-color violet_muted  #3B2D8A;
+@define-color accent_violet #7B61FF;
+@define-color violet_soft   #A990FF;
+@define-color violet_bright #D4C8FF;
+
+@define-color accent_danger    #FF3D6E;
+@define-color accent_warning   #FF8A3D;
+@define-color accent_success   #3DFFB0;
+@define-color accent_highlight #FFE03D;
+
+@define-color text_primary   #E8F4FF;
+@define-color text_secondary #7EAED4;
+@define-color text_tertiary  #3A6080;
+
+@define-color border       #1B3A52;
+@define-color border_hover #254D6A;
+
+@define-color overlay_cyan   rgba(0,229,255,0.13);
+@define-color overlay_violet rgba(123,97,255,0.13);
