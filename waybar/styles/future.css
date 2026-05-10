@@ -79,7 +79,6 @@ window#waybar {
 
 #custom-notification:hover {
   border-width: 1.5px;
-  background-color: @violet_dim;
   color: @accent_danger;
   border-color: @accent_danger;
 }
@@ -135,4 +134,5 @@ tooltip {
 #custom-notification:hover {
   padding: 0 1.6em;
   border-radius: 13px;
+  background-color: @violet_dim;
 }
