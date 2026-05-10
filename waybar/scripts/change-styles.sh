@@ -7,4 +7,3 @@ if [ -L ~/.config/waybar/style.css ]; then
 else
     cp ~/.config/waybar/styles/$style ~/.config/waybar/style.css
 fi
-pkill -SIGUSR2 waybar 

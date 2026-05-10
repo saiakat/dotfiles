@@ -53,8 +53,6 @@ window#waybar {
 }
 
 #clock:hover,
-#pulseaudio:hover,
-#custom-disks:hover,
 #network:hover,
 #cpu:hover,
 #temperature:hover,
@@ -77,11 +75,6 @@ window#waybar {
     border-color: @accent_warning;
 }
 
-#custom-notification:hover {
-  border-width: 1.5px;
-  color: @accent_danger;
-  border-color: @accent_danger;
-}
 
 #workspaces {
   margin: 0.65em 0.3em;
@@ -117,12 +110,6 @@ window#waybar {
     border: 1.5px solid @accent_danger;
 }
 
-tooltip {
-  border: 1px solid @accent_primary;
-  background-color: @overlay_violet;
-  color: @accent_primary;
-}
-
 #custom-disks,
 #pulseaudio,
 #custom-notification {
@@ -133,6 +120,20 @@ tooltip {
 #pulseaudio:hover,
 #custom-notification:hover {
   padding: 0 1.6em;
-  border-radius: 13px;
+  /* border-radius: 13px; */
   background-color: @violet_dim;
+  border-image: url("widget-border.svg") 12 fill / 12px;
+  color: @accent_primary;
+}
+
+tooltip {
+  border-radius: 2px;
+  border: 1px solid @accent_primary;
+  color: @accent_primary;
+  background-color: @bg_surface;
+}
+
+#custom-notification:hover {
+  border-image: url("notification-border.svg") 12 fill / 12px;
+  color: @accent_danger;
 }
