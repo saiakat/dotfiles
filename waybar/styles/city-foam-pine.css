@@ -13,9 +13,9 @@
 .modules-right,
 .modules-left {
   border-radius: 30px;
-  background: @mantle;
+  background: transparent;
   padding: 0.6em 0.4em;
-  border: 1.2px solid @foam;
+  border-bottom: 1.5px solid white;
 }
 
 window#waybar {
@@ -42,8 +42,19 @@ window#waybar {
   background-color: @surface;
   padding: 0 1.4em;
   border-radius: 30px;
-  border: 1px solid @highlightmed; 
+  border-right: 1.2px solid @foam; 
+  border-top: .5px solid @foam; 
   color: @pine;
+}
+
+#pulseaudio,
+#memory,
+#custom-updates,
+#network,
+#custom-disks {
+  border-right: none;
+  border-top: .5px solid @foam; 
+  border-left: 1.2px solid @foam; 
 }
 
 #clock:hover,
@@ -59,7 +70,7 @@ window#waybar {
 #custom-weather:hover,
 #custom-wp-next:hover,
 #custom-disk-home:hover {
-  border-width: 1.5px;
+  border-width: 2px;
   background-color: @basemoon;
   color: @foam;
   border-color: @foam;
@@ -80,7 +91,9 @@ window#waybar {
 #workspaces {
   margin: 0.65em 0.3em;
   background-color: @mantle;
-  border: 1.2px solid @foam;
+  border: none;
+  border-top: .8px solid @foam;
+  border-bottom: 1.5px solid @foam;
   padding: 0 0.7em;
   /* background: transparent; */
 }
