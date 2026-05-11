@@ -22,16 +22,16 @@ export const WithTooltip = ({ text, children, className }) => {
     </window>
   )
 
-  const btn = (
+  const elem = (
     <box class="tooltip-wrapper">
       <Gtk.EventControllerMotion
         onEnter={() => {
-          const alloc = btn.get_allocation()
+          const alloc = elem.get_allocation()
           // translate widget coords to screen coords
-          const [, x, ,] = btn.translate_coordinates(btn.get_root(), 0, 0)
+          const [, x, ,] = elem.translate_coordinates(elem.get_root(), 0, 0)
 
           const display = Gdk.Display.get_default()
-          const monitor = display.get_monitor_at_surface(btn.get_root().get_surface())
+          const monitor = display.get_monitor_at_surface(elem.get_root().get_surface())
           const monitorWidth = monitor.get_geometry().width
           
           if (x > monitorWidth / 2) {
@@ -53,5 +53,5 @@ export const WithTooltip = ({ text, children, className }) => {
     </box>
   )
 
-  return btn
+  return elem
 }

@@ -1,6 +1,6 @@
 import { createPoll } from "ags/time"
 import { Astal } from "ags/gtk4"
-import { WithTooltip } from "./WithTooltip.jsx"
+import { WithTooltip } from "../WithTooltip.jsx"
 import Gtk from "gi://Gtk"
 
 const storage = createPoll(
