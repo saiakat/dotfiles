@@ -3,10 +3,13 @@ import Gtk from "gi://Gtk"
 import Gdk from "gi://Gdk"
 
 export const WithTooltip = ({ text, children, className }) => {
+  const resolvedClass = typeof className === "function"
+  ? className((callback) => `custom-tooltip ${callback}`)
+  : `custom-tooltip ${className}`
   const win = (
     <window
       visible={false}
-      class={`className ${className}`}
+      class={resolvedClass}
       namespace={`tooltip-${Math.random()}`}
       anchor={Astal.WindowAnchor.TOP | Astal.WindowAnchor.LEFT}
       marginTop={50}

@@ -84,4 +84,6 @@
 @define-color overlay_cyan   rgba(0,229,255,0.2);
 @define-color overlay_violet rgba(123,97,255,0.2);
 
-@define-color overlay_violet2 rgba(123,97,255,0.8);
+@define-color overlay_danger rgba(255, 61, 110, 0.2);
+@define-color overlay_warning rgba(255, 138, 61, 0.2);
+@define-color overlay_success rgba(61, 255, 176, 0.2);

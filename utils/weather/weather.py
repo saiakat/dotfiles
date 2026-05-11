@@ -20,7 +20,7 @@ if location == 'no':
     def get_temp_speed(data: dict):
         temp = data["data"]["instant"]["details"]["air_temperature"]
         speed = data["data"]["instant"]["details"]["wind_speed"]
-        return f'{{"text": "󰖐 {temp}°C  {speed}m/s", "tooltip": "Temperature: {temp}°C\\nWindspeed: {speed}m/s"}}'
+        return f'{{"text": "󰖐 {temp}°C  {speed}m/s", "tooltip": "Temperature: {temp}°C\\nWindspeed: {speed}m/s", "ags": {{"temp": {temp}, "speed": {speed}}}}}'
     if response.status_code == 200:
         data: dict = response.json()
         data_today = data['properties']['timeseries'][0]

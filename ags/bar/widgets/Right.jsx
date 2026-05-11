@@ -2,6 +2,7 @@ import { createPoll } from "ags/time";
 import { execAsync } from "ags/process";
 import { fetchNotifications, NOTIF_ICONS } from "../fn/fetchNotifications";
 import { WithTooltip } from "./WithTooltip"
+import { createComputed } from "ags"
 import GLib from "gi://GLib";
 
 // ── Clock ──────────────────────────────────────────────────────────────────
@@ -27,8 +28,8 @@ const Clock = () => {
 
 // ── Weather ────────────────────────────────────────────────────────────────
 const Weather = () => {
-  const weather = createPoll(
-    { text: "", tooltip: "" },
+  const getWeather = createPoll(
+    { text: "", tooltip: "", ags: {}},
     180_000,
     ["bash", "-c", "cat ~/.cache/waybar/weather 2>/dev/null || echo '{\"text\":\"\",\"tooltip\":\"\"}'"],
     (out) => {
@@ -40,12 +41,31 @@ const Weather = () => {
     },
   )
 
+  const classes = { 
+    normal: 'weather-normal',
+    critical: 'weather-critical',
+    danger: 'weather-danger',
+  };
+
+  const getClass = getWeather((w) => {
+    const temp = Number(w.ags.temp)
+    const speed = Number(w.ags.speed)
+    if (temp > 12 && speed < 8) return classes.normal;
+    if (temp > 5 || speed < 10) return classes.critical;
+    return classes.danger
+  });
+
+  const btnClass =  createComputed(() => `module ${getClass()}`)
+
   return (
-    <WithTooltip text={weather((w) => w.tooltip)}>
+    <WithTooltip
+      text={getWeather((w) => w.tooltip)}
+      className={getClass}
+    >
       <button
-        class="module"
+        class={btnClass}
       >
-        <label label={weather((w) => w.text)} />
+        <label label={getWeather((w) => w.text)} />
       </button>
     </WithTooltip>
   )
@@ -82,10 +102,11 @@ const Holidays = () => {
 
 
 const Notification = () => {
+  const notifiTooltipClass = createComputed(fetchNotifications((n) => `tooltip-notification ${n.class}`))
   return (
     <WithTooltip 
       text={fetchNotifications((n) => `${n.text} Notifications`)} 
-      className="tooltip-notification"
+      className={notifiTooltipClass}
     >
       <button
         class={fetchNotifications((n) => `module notification-module ${n.class}`)}

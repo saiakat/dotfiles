@@ -2,36 +2,8 @@ import { createPoll } from "ags/time"
 import { execAsync } from "ags/process"
 import { fetchUpdates } from "../fn/fetchUpdates"
 import { WithTooltip } from "./WithTooltip"
-
-// ── Disks ──────────────────────────────────────────────────────────────────
-const Disks = () => {
-  const storage = createPoll(
-    { text: "", tooltip: "" },
-    30_000,
-    ["bash", "-c", "~/.config/waybar/scripts/get-storage.sh"],
-    (out) => {
-      try {
-        return JSON.parse(out)
-      } catch {
-        return { text: out, tooltip: out }
-      }
-    },
-  );
-
-  return (
-    <WithTooltip text={storage((s) => s.text)}>
-      <button
-        class="module disks-module"
-        onClicked={() => {
-          console.log('hi');
-          execAsync(["bash", "-c", "~/.config/waybar/scripts/disks-ui.sh"]).catch(console.error);
-        }}
-      >
-        <label label="" halign={3} />
-      </button>
-    </WithTooltip>
-  );
-};
+import { createComputed } from "ags"
+import { Disks } from "./Disks"
 
 // ── Network ────────────────────────────────────────────────────────────────
 const Network = () => {
@@ -87,9 +59,21 @@ const Memory = () => {
       })
       .catch(() => ({ percent: 0, used: 0, total: 0 }))
   )
+    const memoryStatus = mem((m) => {
+      const { percent } = m
+      if (percent > 50) return "critical"
+      if (percent > 70) return "danger"
+    });
+
+    const memClass = createComputed(() => `module module-mem ${memoryStatus()}`)
+    const memTtClass = createComputed(() => `tooltip-mem ${memoryStatus()}`)
+    console.log(memClass)
     return (
-      <WithTooltip text={mem((m) => `used: ${m.used} GiB\ntotal: ${m.total} GiB`)}>
-        <button class="module">
+      <WithTooltip
+        text={mem((m) => `used: ${m.used} GiB\ntotal: ${m.total} GiB`)}
+        className={memTtClass}
+      >
+        <button class={memClass}>
           <label label={mem((m) => ` ${m.percent}%`)} />
         </button>
       </WithTooltip>
