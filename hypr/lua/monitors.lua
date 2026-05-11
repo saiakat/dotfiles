@@ -1,41 +1,3 @@
--- monitors.lua — Monitor layout, workspace assignments, and monitor scripts
-
-local monitorMain   = "DP-3"
-local monitorSecond = "HDMI-A-2"
-
--- Primary monitor — positioned to the left
-hl.monitor({
-  output   = monitorMain,
-  mode     = "preferred",
-  position = "auto-left",
-  scale    = "auto",
-})
-
--- Secondary monitor — positioned to the right
-hl.monitor({
-  output   = monitorSecond,
-  mode     = "preferred",
-  position = "auto-right",
-  scale    = "auto",
-})
-
--- Catch-all fallback for any other connected monitor
-hl.monitor({
-  output   = "",
-  mode     = "preferred",
-  position = "auto",
-  scale    = "auto",
-})
-
-print(hl.get_monitors())
--- Workspace → monitor assignments
-hl.workspace_rule({ workspace = "1", monitor = monitorMain })
-hl.workspace_rule({ workspace = "2", monitor = monitorMain })
-hl.workspace_rule({ workspace = "3", monitor = monitorSecond })
-hl.workspace_rule({ workspace = "4", monitor = monitorSecond })
-
--- Monitor-related startup scripts
-hl.on("hyprland.start", function()
   local monitor_table = hl.get_monitors()
   local dp = 'DP'
   local hdmi = 'HDMI'
@@ -99,5 +61,3 @@ hl.on("hyprland.start", function()
     })
   end
   hl.dsp.focus({ workspace = 1 })
-
-end)
