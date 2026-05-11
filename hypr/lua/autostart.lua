@@ -1,9 +1,8 @@
--- autostart.lua — exec-once commands run at Hyprland startup
--- programs.lua must be required before this file.
+local programs = require("lua.programs")
 
 hl.on("hyprland.start", function()
   -- Terminal on workspace 1
-  hl.exec_cmd("[workspace 1] " .. terminal)
+  hl.exec_cmd("[workspace 1] " .. programs.terminal)
 
   -- Status bar, wallpaper daemon, notifications, idle management
   hl.exec_cmd("ags run ~/.config/ags/bar/bar.jsx & awww-daemon & swaync & hypridle")
