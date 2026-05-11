@@ -166,7 +166,7 @@ tooltip label {
 }
 
 .tooltip-box {
-  background-color: @bg_surface;
+  background-color: @overlay_cyan;
   border: 1px solid @accent_primary;
   padding: 8px 20px;
   color: @accent_primary;
@@ -176,4 +176,10 @@ tooltip label {
 
 .tooltip-box label {
   transform: skewX(20deg);
+}
+
+.tooltip-notification .tooltip-box {
+  background-color: @violet_dim;
+  color: @accent_danger;
+  border: 1px solid @accent_danger;
 }

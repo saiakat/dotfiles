@@ -1,7 +1,7 @@
 import { createPoll } from "ags/time"
 import { execAsync } from "ags/process"
 import { fetchUpdates } from "../fn/fetchUpdates"
-import { WithTooltip } from "./WithTooltip.jsx"
+import { WithTooltip } from "./WithTooltip"
 
 // ── Disks ──────────────────────────────────────────────────────────────────
 const Disks = () => {
@@ -23,6 +23,7 @@ const Disks = () => {
       <button
         class="module disks-module"
         onClicked={() => {
+          console.log('hi');
           execAsync(["bash", "-c", "~/.config/waybar/scripts/disks-ui.sh"]).catch(console.error);
         }}
       >

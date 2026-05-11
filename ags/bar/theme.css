@@ -81,5 +81,7 @@
 @define-color border       #1B3A52;
 @define-color border_hover #254D6A;
 
-@define-color overlay_cyan   rgba(0,229,255,0.13);
-@define-color overlay_violet rgba(123,97,255,0.13);
+@define-color overlay_cyan   rgba(0,229,255,0.2);
+@define-color overlay_violet rgba(123,97,255,0.2);
+
+@define-color overlay_violet2 rgba(123,97,255,0.8);

@@ -1,10 +1,11 @@
 import { createPoll } from "ags/time";
 import { execAsync } from "ags/process";
 import { fetchNotifications, NOTIF_ICONS } from "../fn/fetchNotifications";
+import { WithTooltip } from "./WithTooltip"
 import GLib from "gi://GLib";
 
 // ── Clock ──────────────────────────────────────────────────────────────────
-function Clock() {
+const Clock = () => {
   const clock = createPoll("", 1_000, () => {
     const dt = GLib.DateTime.new_now_local()
     return dt.format(" %a %d %H:%M") ?? ""
@@ -16,14 +17,16 @@ function Clock() {
   })
 
   return (
-    <button class="module" tooltipText={tooltip}>
-      <label label={clock} />
-    </button>
+    <WithTooltip text={tooltip}>
+      <button class="module">
+        <label label={clock} />
+      </button>
+    </WithTooltip>
   )
 }
 
 // ── Weather ────────────────────────────────────────────────────────────────
-function Weather() {
+const Weather = () => {
   const weather = createPoll(
     { text: "", tooltip: "" },
     180_000,
@@ -38,17 +41,18 @@ function Weather() {
   )
 
   return (
-    <button
-      class="module"
-      tooltipText={weather((w) => w.tooltip)}
-    >
-      <label label={weather((w) => w.text)} />
-    </button>
+    <WithTooltip text={weather((w) => w.tooltip)}>
+      <button
+        class="module"
+      >
+        <label label={weather((w) => w.text)} />
+      </button>
+    </WithTooltip>
   )
 }
 
 // ── Holidays ───────────────────────────────────────────────────────────────
-function Holidays() {
+const Holidays = () => {
   const holidays = createPoll(
     { text: "", tooltip: "" },
     86_400_000, // once per day
@@ -63,37 +67,43 @@ function Holidays() {
   )
 
   return (
-    <button
+    <WithTooltip text={holidays((h) => h.tooltip)}>
+      <button
       class="module"
-      tooltipText={holidays((h) => h.tooltip)}
       visible={holidays((h) => h.text !== "")}
-    >
+      >
       <label label={holidays((h) => h.text)} />
-    </button>
+      </button>
+    </WithTooltip>
   )
 }
 
 // ── Notification (swaync) ──────────────────────────────────────────────────
 
 
-function Notification() {
+const Notification = () => {
   return (
-    <button
-      class={fetchNotifications((n) => `module notification-module ${n.class}`)}
-      onClicked={() =>
-        execAsync(["bash", "-c", "swaync-client -t -sw"]).catch(console.error)
-      }
+    <WithTooltip 
+      text={fetchNotifications((n) => `${n.text} Notifications`)} 
+      className="tooltip-notification"
     >
-    <label
-        label={fetchNotifications((n) => NOTIF_ICONS[n.alt] ?? NOTIF_ICONS["none"])}
-        halign={3}
-      />
-    </button>
+      <button
+        class={fetchNotifications((n) => `module notification-module ${n.class}`)}
+        onClicked={() =>
+          execAsync(["bash", "-c", "swaync-client -t -sw"]).catch(console.error)
+        }
+      >
+      <label
+          label={fetchNotifications((n) => NOTIF_ICONS[n.alt] ?? NOTIF_ICONS["none"])}
+          halign={3}
+        />
+      </button>
+    </WithTooltip>
   )
 }
 
 // ── Right group ────────────────────────────────────────────────────────────
-export function Right() {
+export const Right = () => {
   return (
     <box class="modules-right" spacing={0} halign={3 /* END */}>
       <Clock />

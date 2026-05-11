@@ -1,7 +1,7 @@
 import Hyprland from "gi://AstalHyprland"
 import { createBinding, createComputed, For } from "ags"
 
-function WorkspaceButton({ ws }) {
+const WorkspaceButton = ({ ws }) => {
   const hypr = Hyprland.get_default()
   const focused = createBinding(hypr, "focusedWorkspace")
 
@@ -28,7 +28,7 @@ function WorkspaceButton({ ws }) {
   )
 }
 
-export function Center() {
+export const Center = () => {
   const hypr = Hyprland.get_default()
   const workspaces = createBinding(hypr, "workspaces")
 
