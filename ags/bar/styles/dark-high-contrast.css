@@ -15,16 +15,15 @@ window.Bar > centerbox {
 .modules-right,
 .modules-left {
   border-radius: 30px;
-  background: @mantle;
+  background: @base;
   padding: 0.6em 0.4em;
-  border: .5px solid @overlay;
+  border: .5px solid black;
 }
 
-/* ── Shalove pill style ── */
 .module,
 button.module {
   margin: 0 0.3em;
-  background-color: @surface;
+  background-color: @crust;
   padding: 0 1.4em;
   border-radius: 30px;
   border: 1px solid @highlightlow; 
@@ -33,9 +32,9 @@ button.module {
 
 .module:hover {
   border-width: 1.5px;
-  background-color: @crust;
-  color: @pink;
-  border-color: @pink;
+  background-color: @iris;
+  color: black;
+  border-color: @crust;
 }
 
 .notification-module.dnd-notification,
@@ -51,22 +50,22 @@ button.module {
 }
 
 .workspaces-container {
-  margin: 0.65em 0.3em;
-  background-color: @mantle;
-  border: none;
-  padding: 0 0.7em;
   border-radius: 30px;
+  margin: 0.65em 0.3em;
+  background-color: @base;
+  border: .5px solid black;
+  padding: 0 0.7em;
   /* background: transparent; */
 }
 
 .workspace-btn {
   margin: 0.6em 0.2em;
-  background-color: @overlay;
-  color: @overlay;
-  border: 1px solid @highlightlow; 
+  background-color: @mantle;
+  border: 1px solid @surface1; 
   border-radius: 10px;
   transition: all 200ms ease-in-out;
   padding: 0 5px;
+  color: @mantle;
 }
 
 .workspace-btn:hover {
@@ -119,7 +118,7 @@ button.module {
 }
 
 .tooltip-box {
-  background-color: @base;
+  background-color: @crust;
   border: 1px solid @highlihgtlow;
   padding: 8px 20px;
   color: @iris;
@@ -131,8 +130,8 @@ button.module {
 }
 
 .disks-box {
-  background-color: @mantle;
-  border: 1px solid @highlightmed;
+  background-color: @base;
+  border: 1px solid black;
   padding: 30px 60px;
   color: @iris;
   border-radius: 20px;
@@ -145,7 +144,7 @@ button.module {
 
 .disks-close {
   margin-top: 10px;
-  background: @base;
+  background: @crust;
   border: 1px solid @hihglightlow;
   color: @iris;
   padding: 2px 10px;
@@ -153,19 +152,18 @@ button.module {
 }
 
 .disks-close:hover {
-  background-color: @crust;
-  border: 1.5px solid @pink;
-  color: @pink;
+  background-color: @iris;
+  color: @crust;
 }
 
 .disks-close:hover label {
-  color: @pink;
+  color: @crust;
 }
 
 .disks-title {
   font-size: 18px;
   margin-bottom: 8px;
-  color: @pink;
+  color: @iris;
   padding-bottom: 4px;
   background-color: @crust;
   padding: 0.6em;

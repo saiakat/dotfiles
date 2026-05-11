@@ -28,7 +28,7 @@ export const Disks = () => {
       <box class="disks-box" orientation={Gtk.Orientation.VERTICAL}>
         <label
           class="disks-title"
-          label="  Storage"
+          label="Storage"
           halign={3}
         />
         <label

@@ -2,6 +2,7 @@
 import app from "ags/gtk4/app"
 import { Astal } from "ags/gtk4"
 import { readFile } from "ags/file"
+import { monitorFile } from "ags/file"
 
 import { Left } from "./widgets/groups/Left"
 import { Center } from "./widgets/groups/Center"
@@ -29,6 +30,12 @@ const Bar = (monitor) => {
       </centerbox>
     </window>
   )
+};
+
+const reapplyCss = () => {
+  app.reset_css()
+  app.apply_css("./theme.css")
+  app.apply_css("./style.css")
 }
 
 app.start({
@@ -38,3 +45,9 @@ css: readFile("./theme.css") + readFile("./style.css"),
     Bar(1)
   },
 })
+
+monitorFile(
+  './style.css', 
+  () => {
+  reapplyCss() 
+});

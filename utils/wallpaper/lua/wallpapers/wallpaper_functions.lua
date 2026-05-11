@@ -29,6 +29,11 @@ local function is_style_same (style1, style2)
 end
 
 local function change_styles ()
+  local ags_flag = 0
+  if helpers.includes(arg, '--ags') then
+    ags_flag = 1
+  end
+
   local style = get_style(vars.current_cache)
   local prev_cache = cache.get_prev_cache_entry(vars.wallpaper_dirs, vars.current_cache_index)
   local prev_style = get_style(prev_cache)
@@ -36,9 +41,9 @@ local function change_styles ()
   if is_style_same(style, prev_style) then
     return
   end
-  os.execute('~/.config/waybar/scripts/change-styles.sh ' .. style)
-  if not os.execute('cp ~/.config/swaync/themes/' .. style .. ' ~/.config/swaync/style.css && killall swaync') then
-    os.execute('cp ~/.config/swaync/themes/default.css ~/.config/swaync/style.css && killall swaync')
+  print('~/.config/waybar/scripts/change-styles.sh ' .. style .. " " .. ags_flag)
+  if not os.execute('~/.config/waybar/scripts/change-styles.sh ' .. style .. " " .. ags_flag) then
+    os.execute('~/.config/waybar/scripts/change_styles.sh default.css ' .. ags_flag)
   end
 end
 

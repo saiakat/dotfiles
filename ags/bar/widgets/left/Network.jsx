@@ -19,7 +19,7 @@ export const Network = () => {
 
   return (
   <WithTooltip text={tooltip}>
-    <button class="module">
+    <button class={"module network-module"}>
       <label label={label} halign={3} />
     </button>
   </WithTooltip>

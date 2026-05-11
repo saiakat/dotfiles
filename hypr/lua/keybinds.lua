@@ -38,7 +38,7 @@ hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("sh " .. home .. "/dotfiles/h
 
 -- ── Wallpaper (walls) ────────────────────────────────────────────────────────
 hl.bind(mainMod .. " + N",      hl.dsp.exec_cmd("walls next"))
-hl.bind(mainMod .. " + U",      hl.dsp.exec_cmd("walls u --skip-default"))
+hl.bind(mainMod .. " + U",      hl.dsp.exec_cmd("walls u --skip-default --ags"))
 hl.bind(superShift .. " + U",   hl.dsp.exec_cmd("walls n -r"))
 
 -- ── Focus movement (vim-style) ───────────────────────────────────────────────

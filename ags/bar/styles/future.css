@@ -1,0 +1,257 @@
+* {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 12px;
+  font-weight: bold;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+window.Bar,
+window.Bar > centerbox {
+  background-color: transparent;
+}
+
+.modules-left,
+.modules-right {
+  border-radius: 30px;
+  background-color: @bg_void;
+  padding: 0.6em 0.7em;
+  border: 1.5px solid @cyan_soft;
+  margin: 0.3em;
+}
+
+.modules-left {
+  border-bottom-right-radius: 25px;
+  border-top-right-radius: 25px;
+  border-right: none;
+}
+
+.modules-right {
+  border-bottom-left-radius: 25px;
+  border-top-left-radius: 25px;
+  border-left: none;
+}
+
+.module,
+button.module {
+  margin: 0 0.55em;
+  background-color: @bg_surface;
+  padding: 0 14px;
+  border-radius: 0;
+  border: 1px solid @border;
+  color: @text_primary;
+  transition: all 100ms ease-in-out;
+  transform: skewX(-15deg);
+  box-shadow: none;
+  outline: none;
+  text-decoration: none;
+}
+
+.module > * {
+  transform: skewX(15deg);
+}
+
+.module:hover {
+  border-width: 1.5px;
+  background-color: @bg_panel;
+  color: @accent_primary;
+  border-color: @accent_primary;
+}
+
+.module-mem.critical,
+.module.weather-critical {
+  border-color: @accent_warning;
+}
+
+.module-mem.danger,
+.module.weather-danger {
+  border-color: @accent_danger;
+}
+
+.module.weather-normal {
+  border-color: @accent_success;
+}
+
+.module.weather-critical:hover {
+  border-width: 1.5px;
+  color: @accent_warning;
+}
+
+.workspaces-container {
+  margin: 0.65em 0.3em;
+  background-color: @bg_abyss;
+  border-radius: 30px;
+  padding: 0 7px;
+  border-bottom: 2px solid @overlay_cyan;
+}
+
+.workspace-btn {
+  margin: 0.6em 0.2em;
+  background-color: @bg_elevated;
+  border: 0.4px solid @bg_panel;
+  border-radius: 10px;
+  padding: 0 5px;
+  color: @bg_elevated;
+  transition: all 200ms ease-in-out;
+  min-width: 20px;
+  min-height: 16px;
+}
+
+.workspace-btn:hover {
+  background-color: @bg_void;
+  color: @text_secondary;
+}
+
+.workspace-btn.active {
+  color: @text_secondary;
+  border: 1.5px solid @text_secondary;
+  padding: 0 10px;
+}
+
+.workspace-btn.urgent {
+  color: @accent_danger;
+  border: 1.5px solid @accent_danger;
+}
+
+.volume-module,
+.disks-module,
+.notification-module {
+  transition: all 100ms ease-in-out;
+}
+
+.volume-module:hover,
+.disks-module:hover {
+  margin: 0 10px;
+  padding: 0 20px;
+  background-color: @violet_dim;
+  color: @accent_primary;
+  border-color: @accent_primary;
+}
+
+.notification-module {
+  min-width: 2em;
+}
+
+.notification-module.dnd-notification,
+.notification-module.notification {
+  color: @accent_warning;
+  border-color: @accent_warning;
+}
+
+.notification-module:hover {
+  margin: 0 10px;
+  padding: 0 16px;
+  background-color: @violet_dim;
+  border-color: @accent_success;
+  color: @accent_success;
+}
+
+.notification-module.notification:hover {
+  border-color: @accent_danger;
+  color: @accent_danger;
+}
+
+.tooltip-wrapper {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+}
+
+.custom-tooltip {
+  background: transparent;
+  padding: 0 3px;
+}
+
+.tooltip-box {
+  background-color: @overlay_cyan;
+  border: 1px solid @accent_primary;
+  padding: 8px 20px;
+  color: @accent_primary;
+  transform: skewX(-20deg);
+  border-radius: 0;
+}
+
+.tooltip-box label {
+  transform: skewX(20deg);
+}
+
+.tooltip-notification .tooltip-box {
+  background-color: @violet_dim;
+  color: @accent_success;
+  border-color: @accent_success;
+}
+
+.tooltip-notification.notification .tooltip-box {
+  color: @accent_danger;
+  border-color: @accent_danger;
+}
+
+.weather-normal .tooltip-box,
+.tooltip-mem .tooltip-box {
+  background-color: @overlay_success;
+  color: @accent_success;
+  border-color: @accent_success;
+}
+
+.weather-critical .tooltip-box,
+.tooltip-mem.critical .tooltip-box {
+  background-color: @overlay_warning;
+  color: @accent_warning;
+  border-color: @accent_warning;
+}
+
+.weather-danger .tooltip-box,
+.tooltip-mem.danger .tooltip-box {
+  background-color: @overlay_danger;
+  color: @accent_danger;
+  border-color: @accent_danger;
+}
+
+
+.disks-window {
+  background: transparent;
+}
+
+.disks-box {
+  background-color: @violet_dim;
+  border: 2px solid @accent_primary;
+  padding: 30px 60px;
+  color: @accent_primary;
+  transform: skewX(-20deg);
+  border-radius: 0;
+}
+
+.disks-box label,
+.disks-box button {
+  color: @text_primary;
+  font-size: 16px;
+  transform: skewX(20deg);
+}
+.disks-title {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: @cyan_bright;
+  border-bottom: 1px solid @accent_primary;
+  padding-bottom: 4px;
+}
+
+.disks-close {
+  margin-top: 10px;
+  background: transparent;
+  border: 1px solid @accent_primary;
+  color: @accent_primary;
+  padding: 2px 10px;
+  border-radius: 0;
+}
+
+.disks-close:hover {
+  background-color: @overlay_violet;
+  color: @bg_surface;
+}
+
+.disks-close label {
+  transform: skewX(0deg);
+}
+
