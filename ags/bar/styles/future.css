@@ -2,7 +2,7 @@
   font-family: "JetBrainsMono Nerd Font";
   font-size: 12px;
   font-weight: bold;
-  min-height: 0;
+  min-height: 0.5em;
   margin: 0;
   padding: 0;
 }
@@ -16,7 +16,7 @@ window.Bar > centerbox {
 .modules-right {
   border-radius: 30px;
   background-color: @bg_void;
-  padding: 0.6em 0.7em;
+  padding: 0.75em 0.9em;
   border: 1.5px solid @cyan_soft;
   margin: 0.3em;
 }
@@ -42,14 +42,14 @@ button.module {
   border: 1px solid @border;
   color: @text_primary;
   transition: all 100ms ease-in-out;
-  transform: skewX(-15deg);
+  transform: skewX(-18deg);
   box-shadow: none;
   outline: none;
   text-decoration: none;
 }
 
 .module > * {
-  transform: skewX(15deg);
+  transform: skewX(18deg);
 }
 
 .module:hover {
@@ -87,11 +87,11 @@ button.module {
 }
 
 .workspace-btn {
-  margin: 0.6em 0.2em;
+  margin: 0.75em 0.2em;
   background-color: @bg_elevated;
   border: 0.4px solid @bg_panel;
   border-radius: 10px;
-  padding: 0 5px;
+  padding: 0 0.3em;
   color: @bg_elevated;
   transition: all 200ms ease-in-out;
   min-width: 20px;
