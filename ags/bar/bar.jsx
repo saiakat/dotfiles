@@ -3,9 +3,9 @@ import app from "ags/gtk4/app"
 import { Astal } from "ags/gtk4"
 import { readFile } from "ags/file"
 
-import { Left } from "./widgets/Left"
-import { Center } from "./widgets/Center"
-import { Right } from "./widgets/Right"
+import { Left } from "./widgets/groups/Left"
+import { Center } from "./widgets/groups/Center"
+import { Right } from "./widgets/groups/Right"
 
 const Bar = (monitor) => {
   const { TOP, LEFT, RIGHT } = Astal.WindowAnchor

@@ -1,4 +1,4 @@
-import { Disks, Volume, Network, Memory, Updates } from "./left/index"
+import { Disks, Volume, Network, Memory, Updates } from "../left/index"
 
 export const Left = () => {
   return (
