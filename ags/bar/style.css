@@ -1,0 +1,179 @@
+/* ── Global reset ───────────────────────────────────────────────────────── */
+* {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 12px;
+  font-weight: bold;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Bar window ─────────────────────────────────────────────────────────── */
+window.Bar {
+  background-color: transparent;
+}
+
+window.Bar > centerbox {
+  background-color: transparent;
+}
+
+/* ── Left / Right pill containers ──────────────────────────────────────── */
+.modules-left,
+.modules-right {
+  border-radius: 30px;
+  background-color: @bg_void;
+  padding: 0.6em 0.6em;
+  border: 1.5px solid @cyan_soft;
+  margin: 0.3em;
+}
+
+.modules-left {
+  border-right: none;
+}
+
+.modules-right {
+  border-left: none;
+}
+
+/* ── Shared module pill style ───────────────────────────────────────────── */
+.module {
+  margin: 0 0.5em;
+  background-color: @bg_surface;
+  padding: 0 14px;
+  border-radius: 0;
+  border: 1px solid @border;
+  color: @text_primary;
+  transition: all 100ms ease-in-out;
+  transform: skewX(-10deg);
+}
+
+.module:hover {
+  border-width: 1.5px;
+  background-color: @bg_panel;
+  color: @accent_primary;
+  border-color: @accent_primary;
+}
+
+/* Remove default button styling */
+.module,
+button.module {
+  box-shadow: none;
+  outline: none;
+  text-decoration: none;
+}
+
+.module > * {
+  transform: skewX(10deg);
+}
+
+/* ── Workspaces container ───────────────────────────────────────────────── */
+.workspaces-container {
+  margin: 0.65em 0.3em;
+  background-color: @bg_abyss;
+  border-radius: 30px;
+  padding: 0 7px;
+  border: none;
+  border-bottom: 2px solid @overlay_cyan;
+}
+
+.workspace-btn {
+  margin: 0.6em 0.2em;
+  background-color: @bg_elevated;
+  border: 0.4px solid @bg_panel;
+  border-radius: 10px;
+  padding: 0 5px;
+  color: @bg_elevated;       /* text invisible at rest — matches waybar */
+  transition: all 200ms ease-in-out;
+  min-width: 20px;
+  min-height: 16px;
+}
+
+.workspace-btn:hover {
+  background-color: @bg_void;
+  color: @text_secondary;
+}
+
+.workspace-btn.active {
+  color: @text_secondary;
+  border: 1.5px solid @text_secondary;
+  padding: 0 10px;
+}
+
+.workspace-btn.urgent {
+  color: @accent_danger;
+  border: 1.5px solid @accent_danger;
+}
+
+/* ── Volume / Disks / Notification — animated expand on hover ───────────── */
+.volume-module,
+.disks-module,
+.notification-module {
+  transition: all 100ms ease-in-out;
+}
+
+.volume-module:hover,
+.disks-module:hover {
+  margin: 0 10px;
+  padding: 0 20px;
+  background-color: @violet_dim;
+  color: @accent_primary;
+  border-color: @accent_primary;
+}
+
+/* ── Notification states ────────────────────────────────────────────────── */
+.notification-module.dnd-notification,
+.notification-module.notification {
+  color: @accent_warning;
+  border-color: @accent_warning;
+}
+
+.notification-module:hover {
+  margin: 0 10px;
+  padding: 0 16px;
+  background-color: @violet_dim;
+  color: @accent_danger;
+  border-color: @accent_danger;
+}
+
+.notification-module {
+  min-width: 2em;
+}
+/* ── Tooltip ────────────────────────────────────────────────────────────── */
+
+tooltip {
+  margin: 0.5em;
+  border-radius: 2px;
+  border: 1px solid @accent_primary;
+  color: @accent_primary;
+  background-color: @bg_surface;
+}
+
+tooltip label {
+  color: @accent_primary;
+  padding: 0.5em;
+}
+
+.tooltip-wrapper {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+}
+
+.custom-tooltip {
+  background: transparent;
+  padding: 0 5px 0 5px;
+}
+
+.tooltip-box {
+  background-color: @bg_surface;
+  border: 1px solid @accent_primary;
+  padding: 8px 20px;
+  color: @accent_primary;
+  transform: skewX(-20deg);
+  border-radius: 0;
+}
+
+.tooltip-box label {
+  transform: skewX(20deg);
+}
