@@ -114,6 +114,23 @@ button.module {
   border: 1.5px solid @accent_danger;
 }
 
+.workspace-btn label {
+  transition: all 200ms ease-in-out;
+  color: @bg_elevated;
+}
+
+.workspace-btn:hover label {
+  color: @text_secondary;
+}
+
+.workspace-btn.active label {
+  color: @text_secondary;
+}
+
+.workspace-btn.urgent label {
+  color: @accent_danger;
+}
+
 .volume-module,
 .disks-module,
 .notification-module {
