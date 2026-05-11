@@ -1,0 +1,8 @@
+-- hl.on("window.active", function(w)
+--   local s = ''
+--   local monitors = hl.get_monitors()
+--   for k, v in pairs(monitors) do
+--     s = tostring(k) .. " / " .. tostring(v)
+--     hl.notification.create({ text = s, timeout = 10000, icon = "ok" })
+--   end
+-- end)
