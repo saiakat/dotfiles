@@ -1,24 +1,29 @@
 import { execAsync } from "ags/process";
 import { fetchNotifications, NOTIF_ICONS } from "../../fn/fetchNotifications";
 import { WithTooltip } from "../WithTooltip"
-import { createComputed } from "ags"
-
 
 export const Notification = () => {
-  const notifiTooltipClass = createComputed(fetchNotifications((n) => `tooltip-notification ${n.class}`))
+  const notifications = fetchNotifications(({ text, class: cls, alt, tooltip }) => ({
+    tooltipClass: `tooltip-notification ${cls}`,
+    modClass: `module notification-module ${cls}`,
+    icon: NOTIF_ICONS[alt] ?? NOTIF_ICONS["none"],
+    text: `${text} Notifications`,
+    tooltip: tooltip !== "" ? tooltip : "0 Notifications",
+  }));
+
   return (
     <WithTooltip 
-      text={fetchNotifications((n) => `${n.text} Notifications`)} 
-      className={notifiTooltipClass}
+      text={notifications(n => n.tooltip)} 
+      className={notifications(n => n.tooltipClass)}
     >
       <button
-        class={fetchNotifications((n) => `module notification-module ${n.class}`)}
+        class={notifications(n => n.modClass)}
         onClicked={() =>
           execAsync(["bash", "-c", "swaync-client -t -sw"]).catch(console.error)
         }
       >
       <label
-          label={fetchNotifications((n) => NOTIF_ICONS[n.alt] ?? NOTIF_ICONS["none"])}
+          label={notifications(n => n.icon)}
           halign={3}
         />
       </button>

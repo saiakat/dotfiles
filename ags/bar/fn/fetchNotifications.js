@@ -1,7 +1,7 @@
 import { createSubprocess } from "ags/process"
 
 export const fetchNotifications = createSubprocess(
-  { alt: "none", class: "" },
+  { alt: "none", class: "", text: "0", tooltip: "" },
   "swaync-client -swb",
   (out, prev) => {
     try {

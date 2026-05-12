@@ -1,7 +1,7 @@
 import { createPoll } from "ags/time"
-import { Astal } from "ags/gtk4"
 import { WithTooltip } from "../WithTooltip.jsx"
 import Gtk from "gi://Gtk"
+import { Popup } from "../generic"
 
 const storage = createPoll(
   { text: "", tooltip: "" },
@@ -12,20 +12,13 @@ const storage = createPoll(
       return JSON.parse(out)
     } catch {
       return { text: out, tooltip: out }
-    }
+    };
   },
 );
 
 export const Disks = () => {
-  const win = (
-    <window
-      visible={false}
-      class="disks-window"
-      namespace="disks-window"
-      layer={Astal.Layer.OVERLAY}
-      anchor={0}
-    >
-      <box class="disks-box" orientation={Gtk.Orientation.VERTICAL}>
+  const box = (
+      <box class="popup-box" orientation={Gtk.Orientation.VERTICAL}>
         <label
           class="disks-title"
           label="Storage"
@@ -35,15 +28,16 @@ export const Disks = () => {
           label={storage((s) => s.text)}
         />
         <button
-          class="disks-close"
+          class="popup-close"
           onClicked={() => { win.visible = false }}
           halign={3}
         >
           <label label="close" />
         </button>
       </box>
-    </window>
-  )
+  );
+
+  const win = Popup({ windowClass: "custom-window", namespace: "disks-window", children: box });
 
   const btn = (
     <button

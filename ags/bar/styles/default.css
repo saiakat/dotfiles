@@ -145,7 +145,7 @@ button.module {
   background: transparent;
 }
 
-.disks-box {
+.popup-box {
   background-color: @mantle;
   border: 1px solid @highlightmed;
   padding: 30px 60px;
@@ -153,12 +153,12 @@ button.module {
   border-radius: 20px;
 }
 
-.disks-box label {
+.popup-box label {
   color: @iris;
   font-size: 16px;
 }
 
-.disks-close {
+.popup-close {
   margin-top: 10px;
   background: @base;
   border: 1px solid @hihglightlow;
@@ -167,13 +167,13 @@ button.module {
   border-radius: 30px;
 }
 
-.disks-close:hover {
+.popup-close:hover {
   background-color: @crust;
   border: 1.5px solid @pink;
   color: @pink;
 }
 
-.disks-close:hover label {
+.popup-close:hover label {
   color: @pink;
 }
 
