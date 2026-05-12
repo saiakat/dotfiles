@@ -12,7 +12,7 @@ const label = vol((out) => {
   const parts = out.trim().split(" ")
   const pct = Math.round(parseFloat(parts[0] ?? "0") * 100)
   const muted = parts[1] === "muted"
-  if (muted) return ""
+  if (muted) return ""
   const icon = pct === 0 ? volIcons[0] : pct < 50 ? volIcons[1] : volIcons[2]
   return `${icon} ${pct}%`
 })
@@ -33,7 +33,7 @@ export const Volume = () => {
               .catch(console.error)
           }}
         />
-        <label label={label} />
+        <label halign={3} label={label} />
       </button>
     </WithTooltip>
   )
