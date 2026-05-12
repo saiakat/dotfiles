@@ -69,10 +69,6 @@ button.module {
   border-color: @accent_danger;
 }
 
-.module.weather-normal {
-  border-color: @accent_success;
-}
-
 .module.weather-critical:hover {
   border-width: 1.5px;
   color: @accent_warning;
@@ -112,6 +108,23 @@ button.module {
 .workspace-btn.urgent {
   color: @accent_danger;
   border: 1.5px solid @accent_danger;
+}
+
+.workspace-btn label {
+  transition: all 200ms ease-in-out;
+  color: @bg_elevated;
+}
+
+.workspace-btn:hover label {
+  color: @text_secondary;
+}
+
+.workspace-btn.active label {
+  color: @text_secondary;
+}
+
+.workspace-btn.urgent label {
+  color: @accent_danger;
 }
 
 .volume-module,

@@ -69,10 +69,6 @@ button.module {
   border-color: @accent_danger;
 }
 
-.module.weather-normal {
-  border-color: @accent_success;
-}
-
 .module.weather-critical:hover {
   border-width: 1.5px;
   color: @accent_warning;

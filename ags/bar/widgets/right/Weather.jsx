@@ -25,8 +25,8 @@ export const Weather = () => {
   const getClass = getWeather((w) => {
     const temp = Number(w.ags.temp)
     const speed = Number(w.ags.speed)
-    if (temp > 12 && speed < 8) return classes.normal;
-    if (temp > 5 || speed < 10) return classes.critical;
+    if (temp > 9 && speed < 10) return classes.normal;
+    if (temp > -5 || speed < 15) return classes.critical;
     return classes.danger
   });
 

@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "checkJs": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "gnim/gtk4",
+    "moduleResolution": "Bundler",
+    "module": "ES2022",
+    "target": "ES2020",
+    "lib": ["ES2024"],
+    "skipLibCheck": true,
+    "paths": {
+      "gi://AstalWp": ["./types/astalwp.d.ts"],
+      "ags/*": ["./node_modules/ags/types/*"]
+    }
+  },
+  "include": ["bar/**/*.js", "bar/**/*.jsx", "types/**/*.d.ts"]
+}
