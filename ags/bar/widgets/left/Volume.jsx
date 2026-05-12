@@ -1,40 +1,47 @@
 import Gtk from "gi://Gtk"
 import { execAsync } from "ags/process"
-import { createPoll } from "ags/time"
+import { createBinding, createComputed } from "gnim"
 import { WithTooltip } from "../WithTooltip.jsx"
+import Wp from "gi://AstalWp"
+
+const wp = Wp.get_default()
+const defaultSpeaker = wp.audio.default_speaker
+
+const volume = createBinding(defaultSpeaker, "volume")
+const muted = createBinding(defaultSpeaker, "mute")
 
 const volIcons = ["", "", " "]
-const vol = createPoll("", 500, ["bash", "-c",
-  `wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null | awk '{print $2, ($3=="[MUTED]" ? "muted" : "")}'`
-])
 
-const label = vol((out) => {
-  const parts = out.trim().split(" ")
-  const pct = Math.round(parseFloat(parts[0] ?? "0") * 100)
-  const muted = parts[1] === "muted"
-  if (muted) return ""
+const label = createComputed(() => {
+  if (muted()) return ""
+  const pct = Math.round(volume() * 100)
   const icon = pct === 0 ? volIcons[0] : pct < 50 ? volIcons[1] : volIcons[2]
   return `${icon} ${pct}%`
 })
 
 export const Volume = () => {
+  const btn = (
+    <button
+      class="module volume-module"
+      onClicked={() => execAsync("pavucontrol").catch(console.error)}
+    >
+      <label halign={Gtk.Align.CENTER} label={label} />
+    </button>
+  )
+
+  const scroll = new Gtk.EventControllerScroll({
+    flags: Gtk.EventControllerScrollFlags.VERTICAL,
+  })
+  scroll.connect("scroll", (_self, _dx, dy) => {
+    const direction = dy > 0 ? "5%-" : "5%+"
+    execAsync(["bash", "-c", `wpctl set-volume @DEFAULT_AUDIO_SINK@ ${direction} --limit 1.0`])
+      .catch(console.error)
+  })
+  btn.add_controller(scroll)
 
   return (
     <WithTooltip text="Click to open pavucontrol">
-      <button
-        class="module volume-module"
-        onClicked={() => execAsync("pavucontrol").catch(console.error)}
-      >
-        <Gtk.EventControllerScroll
-          flags={Gtk.EventControllerScrollFlags.VERTICAL}
-          onScroll={(self, dx, dy) => {
-            const direction = dy > 0 ? "-5%" : "+5%"
-            execAsync(["bash", "-c", `wpctl set-volume @DEFAULT_AUDIO_SINK@ ${direction} --limit 1.0`])
-              .catch(console.error)
-          }}
-        />
-        <label halign={3} label={label} />
-      </button>
+      {btn}
     </WithTooltip>
   )
 }
