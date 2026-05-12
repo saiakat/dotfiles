@@ -60,29 +60,43 @@ button.module {
 }
 
 .workspace-btn {
-  margin: 0.6em 0.2em;
+  margin: 0.8em 0.2em;
   background-color: @overlay;
   color: @overlay;
   border: 1px solid @highlightlow; 
   border-radius: 10px;
   transition: all 200ms ease-in-out;
-  padding: 0 5px;
+  padding: 0 0.3em;
 }
 
 .workspace-btn:hover {
   background: @crust;
-  color: @mauve;
 }
 
 .workspace-btn.active {
-    color: @mauve;
     border: 1.5px solid @mauve;
     padding: 0 1em;
 }
 
 .workspace-btn.urgent {
-    color: @love;
     border: 1.5px solid @love;
+}
+
+.workspace-btn label {
+  transition: all 200ms ease-in-out;
+  color: @overlay;
+}
+
+.workspace-btn:hover label {
+  color: @mauve;
+}
+
+.workspace-btn.active label {
+  color: @mauve;
+}
+
+.workspace-btn.urgent label {
+  color: @love;
 }
 
 .disks-module,
