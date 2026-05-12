@@ -59,20 +59,25 @@ button.module {
   border-color: @accent_primary;
 }
 
-.module-mem.critical,
-.module.weather-critical {
+.module.critical {
   border-color: @accent_warning;
 }
 
-.module-mem.danger,
-.module.weather-danger {
+.module.danger {
   border-color: @accent_danger;
 }
 
-.module.weather-critical:hover {
+.module.critical:hover {
   border-width: 1.5px;
   color: @accent_warning;
 }
+
+.module.danger:hover {
+  border-width: 1.5px;
+  color: @accent_warning;
+}
+
+/* ─── workspaces styles ─────────────────────────────────────────── */
 
 .workspaces-container {
   margin: 0.65em 0.3em;
@@ -90,8 +95,7 @@ button.module {
   padding: 0 0.3em;
   color: @bg_elevated;
   transition: all 200ms ease-in-out;
-  min-width: 20px;
-  min-height: 16px;
+  min-width: 15px;
 }
 
 .workspace-btn:hover {
@@ -127,6 +131,8 @@ button.module {
   color: @accent_danger;
 }
 
+/* ─── Expanding styles ─────────────────────────────────────────── */
+
 .volume-module,
 .disks-module,
 .notification-module {
@@ -141,6 +147,8 @@ button.module {
   color: @accent_primary;
   border-color: @accent_primary;
 }
+
+/* ─── Notification styles ─────────────────────────────────────────── */
 
 .notification-module {
   min-width: 2em;
@@ -165,6 +173,8 @@ button.module {
   color: @accent_danger;
 }
 
+/* ─── Tooltip base ─────────────────────────────────────────── */
+
 .tooltip-wrapper {
   background: transparent;
   padding: 0;
@@ -178,7 +188,7 @@ button.module {
 }
 
 .tooltip-box {
-  background-color: @overlay_cyan;
+  background-color: @violet_dim;
   border: 1px solid @accent_primary;
   padding: 8px 20px;
   color: @accent_primary;
@@ -190,6 +200,25 @@ button.module {
   transform: skewX(20deg);
 }
 
+/* ─── Shared tooltip state ──────────────────────────────────────────── */
+
+.tooltip-state-success .tooltip-box {
+  color: @accent_success;
+  border-color: @accent_success;
+}
+
+.tooltip-state-critical .tooltip-box {
+  color: @accent_warning;
+  border-color: @accent_warning;
+}
+
+.tooltip-state-danger .tooltip-box {
+  color: @accent_danger;
+  border-color: @accent_danger;
+}
+
+/* ─── Notification tooltip (swaync classes) ──────── */
+
 .tooltip-notification .tooltip-box {
   background-color: @violet_dim;
   color: @accent_success;
@@ -197,31 +226,12 @@ button.module {
 }
 
 .tooltip-notification.notification .tooltip-box {
+  background-color: @violet_dim;
   color: @accent_danger;
   border-color: @accent_danger;
 }
 
-.weather-normal .tooltip-box,
-.tooltip-mem .tooltip-box {
-  background-color: @overlay_success;
-  color: @accent_success;
-  border-color: @accent_success;
-}
-
-.weather-critical .tooltip-box,
-.tooltip-mem.critical .tooltip-box {
-  background-color: @overlay_warning;
-  color: @accent_warning;
-  border-color: @accent_warning;
-}
-
-.weather-danger .tooltip-box,
-.tooltip-mem.danger .tooltip-box {
-  background-color: @overlay_danger;
-  color: @accent_danger;
-  border-color: @accent_danger;
-}
-
+/* ─── Disks popup ──────────────────────────────────────────── */
 
 .disks-window {
   background: transparent;
@@ -242,6 +252,7 @@ button.module {
   font-size: 16px;
   transform: skewX(20deg);
 }
+
 .disks-title {
   font-size: 18px;
   margin-bottom: 8px;
@@ -267,4 +278,3 @@ button.module {
 .disks-close label {
   transform: skewX(0deg);
 }
-

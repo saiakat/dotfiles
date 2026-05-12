@@ -17,9 +17,9 @@ export const Weather = () => {
   )
 
   const classes = { 
-    normal: 'weather-normal',
-    critical: 'weather-critical',
-    danger: 'weather-danger',
+    normal: 'success',
+    critical: 'critical',
+    danger: 'danger',
   };
 
   const getClass = getWeather((w) => {
@@ -30,12 +30,13 @@ export const Weather = () => {
     return classes.danger
   });
 
-  const btnClass =  createComputed(() => `module ${getClass()}`)
+  const btnClass =  createComputed(() => `module weather-module ${getClass()}`)
+  const tooltipClass = createComputed(() => `tooltip-state-${getClass()}`)
 
   return (
     <WithTooltip
       text={getWeather((w) => w.tooltip)}
-      className={getClass}
+      className={tooltipClass}
     >
       <button
         class={btnClass}

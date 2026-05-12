@@ -1,14 +1,9 @@
 @import "theme.css";
 
-.control-center,
-.notification,
-.notification-row,
-.widget-title,
-.widget-dnd,
-.widget-buttons-grid,
-.widget-volume,
-.widget-mpris {
+* {
+  background: @manle;
   font-family: "JetBrainsMono Nerd Font Mono";
+  border-radius: 10px;
 }
 
 .control-center .notification-row:focus,
@@ -21,8 +16,8 @@
 }
 
 .notification {
-  background: @bg_panel;
-  border: 1.5px solid @accent_primary;
+  background: @mantle;
+  border: 2px solid @flamingo;
   margin: 3px -2px 3px 0;
   border-radius: 10px;
 }
@@ -32,44 +27,43 @@
 }
 
 .notification-action {
-  border: 1.5px solid @cyan_soft;
+  border: 2px solid @flamingo;
 }
 
 .notification-default-action:hover,
 .notification-action:hover {
-  color: @accent_teal;
-  background: @overlay_cyan;
+  color: @blue;
 }
 
 .inline-reply-entry {
   background: inherit;
-  color: @accent_primary;
-  caret-color: @accent_primary;
+  color: @iris;
+  caret-color: @iris;
 }
 
 .inline-reply-button {
   margin-top: 4px;
   margin-left: 4px;
-  background: @bg_panel;
-  border: 1px solid @cyan_soft;
-  color: @accent_primary;
+  background: @mantle;
+  border: 1px solid @flamingo;
+  color: @iris;
 }
 
 .inline-reply-button:disabled {
   background: transparent;
-  color: @text_tertiary;
+  color: @text;
   border: 1px solid transparent;
 }
 
 .inline-reply-button:hover {
-  background: @bg_elevated;
+  background: @crust;
 }
 
 .summary {
   font-size: 16px;
   font-weight: 700;
   background: transparent;
-  color: @accent_primary;
+  color: @iris;
   text-shadow: none;
 }
 
@@ -77,7 +71,7 @@
   font-size: 16px;
   font-weight: 700;
   background: transparent;
-  color: @text_secondary;
+  color: @text;
   text-shadow: none;
   margin-right: 18px;
 }
@@ -86,64 +80,62 @@
   font-size: 15px;
   font-weight: 400;
   background: transparent;
-  color: @text_primary;
+  color: @text;
   text-shadow: none;
 }
 
 .control-center {
   border-radius: 10px;
-  background: @bg_surface;
-  border: 1.5px solid @accent_primary;
+  background: @mantle;
+  border: 2px solid @flamingo;
 }
 
 .widget-title {
-  color: @accent_primary;
-  background: @bg_void;
+  color: @iris;
+  background: @base;
   padding: 5px 10px;
   margin: 10px;
   font-size: 1.5rem;
-  border-radius: 10px;
 }
 
 .widget-title>button {
   font-size: 1rem;
-  color: @text_primary;
-  background: @bg_elevated;
+  color: @text;
+  background: @crust;
   box-shadow: none;
 }
 
 .widget-title>button:hover {
-  background: @accent_danger;
-  color: @bg_void;
+  background: @love;
+  color: @crust;
 }
 
 .widget-dnd {
-  background: @bg_void;
+  background: @base;
   padding: 5px 10px;
   margin: 10px;
   font-size: large;
-  border-radius: 10px;
 }
 
-.widget-dnd label {
-  color: @accent_primary;
+.widget-dnd label{
+  color: @iris;
 }
 
 .widget-dnd>switch {
-  background: @bg_elevated;
+  background: @crust;
 }
 
 .widget-dnd>switch slider {
-  background: @text_secondary;
+  background: @text;
 }
 
 .widget-dnd>switch:checked {
-  background: @cyan_dim;
-  border: 1px solid @accent_primary;
+  background: @highlightmedium;
+  border: 1px solid @flamingo;
 }
 
 .widget-dnd>switch:checked slider {
-  background: @accent_primary;
+  background: @base;
 }
 
 .widget-label>label {
@@ -155,70 +147,65 @@
   font-size: x-large;
   padding: 5px;
   margin: 0px 10px 10px 10px;
-  background: @bg_void;
-  border-radius: 10px;
+  background: @base;
 }
 
 .widget-buttons-grid>flowbox>flowboxchild>button {
   margin: 3px;
   padding: 4px 30px;
-  background: @bg_elevated;
-  color: @text_primary;
+  background: @crust;
+  color: @text;
   transition: background-color 0.15s ease-in-out;
   border-radius: 10px;
 }
 
 .widget-buttons-grid>flowbox>flowboxchild>button:hover {
-  background: @overlay_cyan;
-  color: @accent_primary;
+  background: @highlightmedium;
+  color: @base;
 }
 
 .widget-buttons-grid>flowbox>flowboxchild>button:checked {
-  background: @cyan_dim;
-  color: @accent_primary;
-  border: 1px solid @accent_primary;
+  background: @love;
+  color: @crust;
 }
 
 .widget-volume {
-  background: @bg_void;
+  background: @base;
   padding: 5px;
   margin: 5px 10px;
   font-size: 2rem;
-  color: @text_primary;
-  border-radius: 10px;
+  color: @text;
 }
 
 .widget-volume label {
   padding-left: 10px;
 }
 
-.widget-volume slider {
+.widget-volume slider{
   border-radius: 30px;
-  border-color: @accent_primary;
-  background: @bg_void;
+  border-color: @flamingo;
+  background: @base;
 }
 
-.widget-volume trough {
-  background: @bg_elevated;
+.widget-volume trough{
+  background: @highlightmedium;
 }
 
-.widget-volume highlight {
-  background: @cyan_soft;
+.widget-volume highlight{
+  background: @subtle;
 }
 
 .widget-mpris {
-  border-color: @accent_primary;
-  color: @accent_primary;
-  background: @bg_void;
+  color: @iris;
+  background: @base;
   margin: 0px 10px 10px 10px;
   box-shadow: none;
-  border-radius: 10px;
 }
 
 .widget-mpris>box>button,
 .widget-mpris-player,
 .widget-mpris-album-art {
-  border-radius: 10px;
+  border-radius: 0;
   box-shadow: none;
   margin: 10px;
 }
