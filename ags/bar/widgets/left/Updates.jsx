@@ -2,12 +2,12 @@ import { fetchUpdates } from "../../fn/fetchUpdates";
 import { WithTooltip } from "../WithTooltip";
 import { Popup } from "../generic";
 import { execAsync } from "ags/process";
-import Gtk from "gi://Gtk";
 import { createState } from "ags";
 
 export const Updates = () => {
   const [labelText, setLabelText] = createState("");
   const [visible, setVisible] = createState(false);
+  const handleVisibilityChange = () => setVisible(!visible())
 
   const updateData = fetchUpdates(({ text, tooltip }) => ({
     text: text,
@@ -15,20 +15,22 @@ export const Updates = () => {
   }));
 
   const updateBox = (
-      <box class="popup-box" orientation={Gtk.Orientation.VERTICAL}>
-        <label label="Updates:" class="popup-box-title" halign={3} />
-        <label label={labelText} halign={3}/>
-        <button
-          class="popup-close"
-          onClicked={() => { win.visible = false }}
-          halign={3}
-        >
-          <label label="close" />
-        </button>
-      </box>
+    <>
+      <label label="Updates:" class="popup-box-title" halign={3} />
+      <label label={labelText} halign={3}/>
+      <button 
+        class="popup-btn"
+        onClicked={() => {
+          execAsync(["bash", "-c", "kitty -e yay -Syu"])
+            .catch(console.error)
+        }}
+      > 
+        <label label="Install Updates" />
+      </button>
+    </>
   );
 
-  const win = Popup({ windowClass: "custom-window", namespace: "updates-window", children: updateBox });
+  Popup({ windowClass: "custom-window", namespace: "updates-window", children: updateBox, visible: visible, setVisible: handleVisibilityChange });
 
   return (
     <WithTooltip text={updateData(u => u.tooltip)}>
@@ -38,7 +40,7 @@ export const Updates = () => {
           execAsync(["bash", "-c", "checkupdates; exit 0"])
             .then(out => {
               setLabelText(out === "" ? "All packages up to date" : out);
-              win.visible = !win.visible;
+              handleVisibilityChange()
             })
             .catch(console.error)
         }}

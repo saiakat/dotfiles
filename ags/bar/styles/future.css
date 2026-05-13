@@ -261,7 +261,7 @@ button.module {
   padding-bottom: 4px;
 }
 
-.popup-close {
+.popup-btn {
   margin-top: 10px;
   background: transparent;
   border: 1px solid @accent_primary;
@@ -270,11 +270,11 @@ button.module {
   border-radius: 0;
 }
 
-.popup-close:hover {
+.popup-btn:hover {
   background-color: @overlay_violet;
   color: @bg_surface;
 }
 
-.popup-close label {
+.popup-btn label {
   transform: skewX(0deg);
 }
