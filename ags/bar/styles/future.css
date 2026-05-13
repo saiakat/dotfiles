@@ -262,8 +262,7 @@ button.module {
 .popup-btn {
   margin-top: 10px;
   background: transparent;
-  /* border: 1px solid @accent_primary; */
-  border-image: url("./styles/double-line-frame.svg") 5 fill / 5px;
+  border: 1px solid @accent_primary;
   color: @accent_primary;
   padding: 2px 10px;
   border-radius: 0;
