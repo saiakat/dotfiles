@@ -1,6 +1,6 @@
 import { createPoll } from "ags/time";
-import { WithTooltip } from "../WithTooltip"
-import { createComputed } from "ags"
+import { WithTooltip } from "../generic"
+import { getClass } from "../../fn";
 
 export const Weather = () => {
   const getWeather = createPoll(
@@ -16,22 +16,16 @@ export const Weather = () => {
     },
   )
 
-  const classes = { 
-    normal: 'success',
-    critical: 'critical',
-    danger: 'danger',
-  };
+  const cls = getWeather((w) => {
+    const temp = Number(w.ags?.temp ?? 0)
+    const speed = Number(w.ags?.speed ?? 0)
+    const isNormal = temp > 9 && speed < 10
+    const isCritical = temp > -5 || speed < 15
+    return getClass([isNormal, isCritical, !isNormal && !isCritical])
+  })
 
-  const getClass = getWeather((w) => {
-    const temp = Number(w.ags.temp)
-    const speed = Number(w.ags.speed)
-    if (temp > 9 && speed < 10) return classes.normal;
-    if (temp > -5 || speed < 15) return classes.critical;
-    return classes.danger
-  });
-
-  const btnClass =  createComputed(() => `module weather-module ${getClass()}`)
-  const tooltipClass = createComputed(() => `tooltip-state-${getClass()}`)
+  const btnClass = cls((c) => `module weather-module ${c}`)
+  const tooltipClass = cls((c) => `tooltip-state-${c}`)
 
   return (
     <WithTooltip

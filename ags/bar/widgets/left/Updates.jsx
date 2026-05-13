@@ -1,6 +1,5 @@
 import { fetchUpdates } from "../../fn/fetchUpdates";
-import { WithTooltip } from "../WithTooltip";
-import { Popup } from "../generic";
+import { Popup, WithTooltip } from "../generic";
 import { execAsync } from "ags/process";
 import { createState } from "ags";
 

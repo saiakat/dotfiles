@@ -188,30 +188,37 @@ button.module {
 }
 
 .tooltip-box {
-  background-color: @violet_dim;
+  background-color: @bg_panel;
   border: 1px solid @accent_primary;
   padding: 8px 20px;
   color: @accent_primary;
-  transform: skewX(-20deg);
+  /* transform: skewX(-20deg); */
   border-radius: 0;
 }
 
 .tooltip-box label {
-  transform: skewX(20deg);
+  /* transform: skewX(20deg); */
+}
+
+.custom-tooltip .double-frame {
+  color: @accent_primary;
 }
 
 /* ─── Shared tooltip state ──────────────────────────────────────────── */
 
+.tooltip-state-success .double-frame,
 .tooltip-state-success .tooltip-box {
   color: @accent_success;
   border-color: @accent_success;
 }
 
+.tooltip-state-critical .double-frame,
 .tooltip-state-critical .tooltip-box {
   color: @accent_warning;
   border-color: @accent_warning;
 }
 
+.tooltip-state-danger .double-frame,
 .tooltip-state-danger .tooltip-box {
   color: @accent_danger;
   border-color: @accent_danger;
@@ -219,14 +226,14 @@ button.module {
 
 /* ─── Notification tooltip (swaync classes) ──────── */
 
+.tooltip-notification .double-frame,
 .tooltip-notification .tooltip-box {
-  background-color: @violet_dim;
   color: @accent_success;
   border-color: @accent_success;
 }
 
+.tooltip-notification.notification .double-frame,
 .tooltip-notification.notification .tooltip-box {
-  background-color: @violet_dim;
   color: @accent_danger;
   border-color: @accent_danger;
 }

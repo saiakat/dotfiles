@@ -1,6 +1,7 @@
 import { Astal } from "ags/gtk4"
 import Gtk from "gi://Gtk"
 import Gdk from "gi://Gdk"
+import { DoubleFrame } from "../decorations"
 
 export const WithTooltip = ({ text, children, className }) => {
   const resolvedClass = typeof className === "function"
@@ -16,9 +17,11 @@ export const WithTooltip = ({ text, children, className }) => {
       marginLeft={0}
       layer={Astal.Layer.OVERLAY}
     >
-      <box class="tooltip-box">
-        <label label={text} wrap={true} halign={3}/>
-      </box>
+      <Gtk.Overlay $={(self) => self.add_overlay(DoubleFrame({}))}>
+        <box class="tooltip-box">
+          <label label={text} wrap={true} halign={3}/>
+        </box>
+      </Gtk.Overlay>
     </window>
   )
 

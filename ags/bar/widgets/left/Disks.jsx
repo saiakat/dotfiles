@@ -1,6 +1,5 @@
 import { createPoll } from "ags/time"
-import { WithTooltip } from "../WithTooltip.jsx"
-import { Popup } from "../generic"
+import { Popup, WithTooltip } from "../generic"
 import { createState } from "gnim"
 
 const storage = createPoll(

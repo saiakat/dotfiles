@@ -1,6 +1,6 @@
 import { execAsync } from "ags/process";
 import { fetchNotifications, NOTIF_ICONS } from "../../fn/fetchNotifications";
-import { WithTooltip } from "../WithTooltip"
+import { WithTooltip } from "../generic"
 
 export const Notification = () => {
   const notifications = fetchNotifications(({ text, class: cls, alt, tooltip }) => ({
@@ -13,7 +13,7 @@ export const Notification = () => {
 
   return (
     <WithTooltip 
-      text={notifications(n => n.tooltip)} 
+      text={notifications(n => n.tooltip === "" ? "0 Notifications" : n.tooltip)} 
       className={notifications(n => n.tooltipClass)}
     >
       <button

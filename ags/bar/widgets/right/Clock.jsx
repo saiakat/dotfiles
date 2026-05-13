@@ -1,5 +1,5 @@
 import { createPoll } from "ags/time";
-import { WithTooltip } from "../WithTooltip"
+import { WithTooltip } from "../generic"
 import GLib from "gi://GLib";
 
 export const Clock = () => {

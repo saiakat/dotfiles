@@ -1,7 +1,7 @@
 import Gtk from "gi://Gtk"
 import { execAsync } from "ags/process"
 import { createBinding, createComputed } from "gnim"
-import { WithTooltip } from "../WithTooltip.jsx"
+import { WithTooltip } from "../generic"
 import Wp from "gi://AstalWp"
 
 const wp = Wp.get_default()
