@@ -1,8 +1,14 @@
-import { Astal } from "ags/gtk4"
-import Gtk from "gi://Gtk"
+import { Astal } from "ags/gtk4";
+import Gtk from "gi://Gtk";
+import { CornerBrackets, Divider } from "../decorations";
 
-export const Popup = ({ windowClass, namespace, children, visible, setVisible }) => {
-
+export const Popup = ({
+  windowClass,
+  namespace,
+  children,
+  visible,
+  setVisible,
+}) => {
   const win = (
     <window
       visible={visible}
@@ -11,16 +17,19 @@ export const Popup = ({ windowClass, namespace, children, visible, setVisible })
       layer={Astal.Layer.OVERLAY}
       anchor={0}
     >
-    <box class="popup-box" orientation={Gtk.Orientation.VERTICAL}>
-      {children ? children : null}
-      <button
-        class="popup-btn"
-        onClicked={setVisible}
-        halign={3}
-      >
-        <label label="close" />
-      </button>
-    </box>
+      <Gtk.Overlay $={(self) => self.add_overlay(CornerBrackets({}))}>
+      <box class="popup-box" orientation={Gtk.Orientation.VERTICAL}>
+        {children ? children : null}
+        <Divider />
+        <button
+          class="popup-btn"
+          onClicked={setVisible}
+          halign={3}
+        >
+          <label label="close" />
+        </button>
+      </box>
+    </Gtk.Overlay>
     </window>
   );
   return win;

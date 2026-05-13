@@ -238,11 +238,10 @@ button.module {
 }
 
 .popup-box {
-  background-color: @violet_dim;
-  border: 2px solid @accent_primary;
+  background-color: @bg_panel;
+  border: 1px solid @bg_void;
   padding: 30px 60px;
   color: @accent_primary;
-  transform: skewX(-20deg);
   border-radius: 0;
 }
 
@@ -250,7 +249,6 @@ button.module {
 .popup-box button {
   color: @text_primary;
   font-size: 16px;
-  transform: skewX(20deg);
 }
 
 .disks-title {
@@ -264,7 +262,8 @@ button.module {
 .popup-btn {
   margin-top: 10px;
   background: transparent;
-  border: 1px solid @accent_primary;
+  /* border: 1px solid @accent_primary; */
+  border-image: url("./styles/double-line-frame.svg") 5 fill / 5px;
   color: @accent_primary;
   padding: 2px 10px;
   border-radius: 0;
