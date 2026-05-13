@@ -283,3 +283,14 @@ button.module {
 .popup-btn label {
   transform: skewX(0deg);
 }
+
+/* Calendar */
+
+calendar {
+  background-color: @bg_elevated;
+  border-color: @accent_primary;
+  border-radius: 0;
+}
+
+  color: @accent_primary;
+}

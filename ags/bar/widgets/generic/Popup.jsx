@@ -3,8 +3,8 @@ import Gtk from "gi://Gtk";
 import { CornerBrackets, Divider } from "../decorations";
 
 export const Popup = ({
-  windowClass,
-  namespace,
+  windowClass = "custom-window",
+  namespace = "",
   children,
   visible,
   setVisible,
