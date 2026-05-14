@@ -14,7 +14,7 @@ local function check_reminders ()
       for _, val in ipairs(v) do
         s = s .. "\n" .. val
       end
-      os.execute("notify-send \"reminders for today: " .. s .. "\"")
+      os.execute("notify-send 'Reminders for today: " .. s .. "'")
       break
     end
   end
