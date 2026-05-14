@@ -8,9 +8,12 @@ export const fetchUpdates = () =>
     .then((out) => {
       const lines = out.trim().split("\n").filter(Boolean)
       const count = lines.length
-      if (count === 0) setUpdateData({ text: "󰅠", tooltip: "All packages up to date" })
-      else if (count === 1) setUpdateData({ text: "󰅢", tooltip: "1 update available" })
-      else setUpdateData({ text: "󰅢", tooltip: `${count} updates available` })
+      const updates = out.trim()
+
+      if (count === 0) setUpdateData({ text: "󰅠", tooltip: "All packages up to date", updates: "All packages up do date" })
+      else if (count === 1) setUpdateData({ text: "󰅢", tooltip: "1 update available", updates: `${updates}` })
+      else setUpdateData({ text: "󰅢", tooltip: `${count} updates available`, updates:`${updates}` })
+      return 0
     })
     .catch(console.error)
 

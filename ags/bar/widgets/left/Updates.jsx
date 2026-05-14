@@ -1,4 +1,4 @@
-import { updateData } from "../../fn/fetchUpdates"
+import { updateData, setUpdateData, fetchUpdates } from "../../fn/fetchUpdates"
 import { Popup, WithTooltip } from "../generic"
 import { execAsync } from "ags/process"
 import { createState } from "ags"
@@ -8,15 +8,22 @@ const [visible, setVisible] = createState(false)
 
 const toggleVisible = () => setVisible(!visible())
 
-const checkUpdates = () =>
-  execAsync(["bash", "-c", "checkupdates; exit 0"])
-    .then((out) => {
-      setLabelText(out.trim() === "" ? "All packages up to date" : out.trim())
+const checkUpdates = () => {
+  setUpdateData({ text: "󰑓", tooltip: "Checking for Updates" });
+  fetchUpdates()
+    .then(() => {
+      setLabelText(updateData().updates)
       toggleVisible()
     })
     .catch(console.error)
+}
 
-
+const installUpdates = () => {
+  setUpdateData({ text: "󰇚", tooltip: "downloading updates" });
+  execAsync(["bash", "-c", "kitty -e yay -Syu --noconfirm"])
+    .then(fetchUpdates)
+    .catch(console.error)
+}
 
 export const Updates = () => {
   const updateBox = (
@@ -25,7 +32,7 @@ export const Updates = () => {
     <label label={labelText} halign={3} />
     <button
     class="popup-btn"
-    onClicked={() => execAsync(["bash", "-c", "kitty -e yay -Syu"]).catch(console.error)}
+    onClicked={installUpdates}
     >
     <label label="Install Updates" />
     </button>
