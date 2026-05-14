@@ -318,3 +318,8 @@ calendar {
 .popup-box calendar grid label.other-month {
   color: @text_tertiary;
 }
+
+.popup-input {
+  padding: 1em 0;
+  font-size: 12px;
+}

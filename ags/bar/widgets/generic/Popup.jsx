@@ -13,6 +13,7 @@ export const Popup = ({
   children,
   visible,
   setVisible,
+  func = () => {},
 }) => {
   let width = Math.floor(monitorWidth * 0.1)
   let height = Math.floor(monitorHeight * 0.1)
@@ -38,7 +39,10 @@ export const Popup = ({
         <Divider />
         <button
           class="popup-btn"
-          onClicked={setVisible}
+          onClicked={() => {
+            setVisible();
+            func();
+          }}
           halign={3}
         >
           <label label="close" />

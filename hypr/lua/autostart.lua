@@ -16,4 +16,6 @@ hl.on("hyprland.start", function()
   hl.exec_cmd(os.getenv("HOME") .. "/.config/hypr/scripts/get-updates.sh")
   hl.exec_cmd(os.getenv("HOME") .. "/.config/hypr/scripts/get-holidays.sh")
   hl.exec_cmd(os.getenv("HOME") .. "/.config/hypr/scripts/weather.sh")
+  hl.exec_cmd("lua " .. os.getenv("HOME") .. "/.config/hypr/lua/check_reminders.lua")
+
 end)

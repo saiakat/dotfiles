@@ -8,9 +8,10 @@ import { Divider } from "../decorations";
 
 const [visible, setVisible] = createState(false);
 const [visibleEvent, setVisibleEvent] = createState(false);
+const [visibleLabel, setVisibleLabel] = createState(false);
 const [selectedDate, setSelectedDate] = createState(null);
-const handleVisibilityChange = () => setVisible(!visible());
-const handleEventVisibility = () => setVisibleEvent(!visibleEvent());
+const [labelText, setLabel] = createState("");
+const handleVisibilityChange = ({setter, visibility}) => ( function () {setter(!visibility())});
 
 const reminderFile = `./reminders.json`;
 
@@ -38,9 +39,22 @@ const clock = createPoll("", 1_000, () => {
   return dt.format(" %a %d %H:%M") ?? ""
 })
 
+const normalizeDate = ({ day, month }) => {
+  let normalizedDay, normalizedMonth = undefined
+  if (day) {
+    normalizedDay = day < 10 ? `0${day}` : day
+  }
+  if (month) {
+    normalizedMonth = month < 10 ? `0${month}` : month
+  }
+  return { day: normalizedDay, month: normalizedMonth }
+}
+
 export const Clock = () => {
   let inputWidget
   let calendarWidget
+
+  const hasEvent = day => loadEvents()[day] ? true : false;
 
   const markEventDays = () => {
     if (!calendarWidget) return
@@ -50,7 +64,8 @@ export const Clock = () => {
     calendarWidget.clear_marks()
 
     for (let day = 1; day <= 31; day++) {
-      const key = `${year}-${month}-${day}`
+      const { month: normalMonth, day: normalDay } = normalizeDate({ day, month })
+      const key = `${year}-${normalMonth}-${normalDay}`
       if (events[key]?.length) {
         calendarWidget.mark_day(day)
       }
@@ -64,21 +79,42 @@ export const Clock = () => {
     const text = inputWidget.get_text()
     if (!text.trim()) return
 
-    const key = `${date.year}-${date.month}-${date.day}`
+    const { day, month } = normalizeDate({ day: date.day, month: date.month });
+    const key = `${date.year}-${month}-${day}`
     const events = loadEvents()
 
     events[key] = [...(events[key] || []), text.trim()]
     writeFile(reminderFile, JSON.stringify(events, null, 2))
     inputWidget.set_text("")
-    handleEventVisibility()
+    handleVisibilityChange({setter: setVisibleEvent, visibility: visibleEvent})();
     markEventDays()
   }
 
-  const handleSelect = (self) => {
-    handleEventVisibility()
-    const { day, month, year } = get_date(self.get_date())
+  const handleSelect = () => {
+    const { day, month, year } = get_date(calendarWidget.get_date())
     setSelectedDate({ day, month, year })
-  }
+    const { day: normalDay, month: normalMonth } = normalizeDate({ day, month })
+
+    const date = `${year}-${normalMonth}-${normalDay}`
+    if (!hasEvent(date)) {
+      handleVisibilityChange({setter: setVisibleEvent, visibility: visibleEvent})();
+      return;
+    };
+    setLabel(loadEvents()[date].join('\n'));
+    handleVisibilityChange({ setter: setVisibleLabel, visibility: visibleLabel })();
+   };
+
+  const eventLabel = (
+    <>
+      <label label={labelText} />
+      <button class="popup-btn" onClicked={() => {
+        setVisibleLabel(false)
+        setVisibleEvent(true)
+      }}>
+        <label label="Add Event" />
+      </button>
+    </>
+  )
 
   const inputBox = (
     <box orientation={Gtk.Orientation.VERTICAL}>
@@ -108,12 +144,19 @@ export const Clock = () => {
     </>
   )
 
-  Popup({ windowClass: "custom-window", namespace: "calendar-window", children: calendar, visible: visible, setVisible: handleVisibilityChange })
-  Popup({ windowClass: "custom-window", namespace: "event-entry", children: inputBox, visible: visibleEvent, setVisible: handleEventVisibility })
+  Popup({ windowClass: "custom-window", namespace: "calendar-window", children: calendar, visible: visible, setVisible: handleVisibilityChange({ setter: setVisible, visibility: visible }) })
+  Popup({ windowClass: "custom-window", namespace: "event-input", children: inputBox, visible: visibleEvent, setVisible: handleVisibilityChange({ setter: setVisibleEvent, visibility: visibleEvent }) })
+  Popup({ 
+    windowClass: "custom-window",
+    namespace: "event-entry",
+    children: eventLabel,
+    visible: visibleLabel,
+    setVisible: handleVisibilityChange({ setter: setVisibleLabel, visibility: visibleLabel }),
+  })
 
   return (
     <WithTooltip text={tooltip}>
-      <button class="module" onClicked={handleVisibilityChange}>
+      <button class="module" onClicked={handleVisibilityChange({ setter: setVisible, visibility: visible })}>
         <label label={clock} />
       </button>
     </WithTooltip>
