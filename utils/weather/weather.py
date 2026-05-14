@@ -27,7 +27,6 @@ if location == 'no':
         print(get_temp_speed(data_today))
         exit()
     else:
-        print(f'Unable to reach api: {response.status_code}')
         exit()
 
 if location == 'de':
