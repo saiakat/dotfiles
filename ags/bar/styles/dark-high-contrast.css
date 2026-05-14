@@ -186,3 +186,6 @@ button.module {
   border-bottom: 1px solid @black;
 }
 
+.popup-box calendar {
+  padding: 1.5em;
+}

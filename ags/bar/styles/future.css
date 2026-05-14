@@ -285,12 +285,36 @@ button.module {
 }
 
 /* Calendar */
-
 calendar {
+    background-image: none;
+    border-image: none;
+    background-color: transparent;
+    color: transparent;
+}
+
+.popup-box calendar {
   background-color: @bg_elevated;
   border-color: @accent_primary;
   border-radius: 0;
+  padding: 1.5em;
 }
 
-  color: @accent_primary;
+.popup-box calendar .today {
+  background-color: @cyan_dim;
+}
+
+.popup-box calendar :selected {
+  background-color: @overlay_cyan;
+}
+
+.popup-box calendar header label {
+  color: @text_primary;
+}
+
+.popup-box calendar grid label.day-number {
+  color: @text_primary;
+}
+
+.popup-box calendar grid label.other-month {
+  color: @text_tertiary;
 }
