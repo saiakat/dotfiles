@@ -145,7 +145,7 @@ button.module {
 }
 
 .popup-box {
-  background-color: @base;
+  background-color: @mantle;
   border: 1px solid black;
   padding: 30px 60px;
   color: @iris;
@@ -188,4 +188,13 @@ button.module {
 
 .popup-box calendar {
   padding: 1.5em;
+}
+
+.popup-box .update-scroll label {
+  margin: 0.5em;
+}
+
+.popup-box .update-scroll {
+  background-color: @crust;
+  border: 1px solid @highlighthigh;
 }

@@ -245,6 +245,7 @@ button.module {
 }
 
 .popup-box {
+  transition: all 200ms ease-in-out;
   background-color: @bg_panel;
   border: 1px solid @bg_void;
   padding: 30px 60px;
@@ -322,4 +323,24 @@ calendar {
 .popup-input {
   padding: 1em 0;
   font-size: 12px;
+}
+
+.popup-box .update-scroll {
+  background-color: @bg_elevated;
+  border: 1px solid @accent_primary;
+}
+
+.popup-box .update-scroll label {
+  margin: 0.5em;
+}
+.popup-box .update-btn-install {
+  transition: all 100ms ease-in-out;
+}
+.popup-box .update-btn-install:hover {
+  border-color: @accent_warning; 
+  border-radius: 5px;
+  padding: 0.3em;
+}
+.popup-box .update-btn-install:hover label {
+  color: @accent_warning; 
 }

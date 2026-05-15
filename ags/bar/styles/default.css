@@ -190,3 +190,11 @@ button.module {
 .popup-box calendar {
   padding: 1.5em;
 }
+
+.popup-box .update-scroll label {
+  margin: 0.5em;
+}
+
+.popup-box .update-scroll {
+  border: 1px solid @highlightmed;
+}

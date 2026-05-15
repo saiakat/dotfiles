@@ -31,10 +31,13 @@ const WorkspaceButton = ({ ws }) => {
 export const Center = () => {
   const hypr = Hyprland.get_default()
   const workspaces = createBinding(hypr, "workspaces")
+  const noMagic = createComputed(() => 
+    workspaces().filter((ws) => ws.id > 0)
+  )
 
   // Sort workspaces by id
   const sorted = createComputed(() =>
-    [...workspaces()].sort((a, b) => a.id - b.id)
+    noMagic().sort((a, b) => a.id - b.id)
   )
 
   return (

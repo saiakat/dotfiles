@@ -1,7 +1,9 @@
+import Gtk from "gi://Gtk"
 import { updateData, setUpdateData, fetchUpdates } from "../../fn/fetchUpdates"
 import { Popup, WithTooltip } from "../generic"
 import { execAsync } from "ags/process"
 import { createState } from "ags"
+import { Divider } from "../decorations"
 
 const [labelText, setLabelText] = createState("All packages up to date")
 const [visible, setVisible] = createState(false)
@@ -29,12 +31,21 @@ export const Updates = () => {
   const updateBox = (
     <>
     <label label="Updates:" class="popup-box-title" halign={3} />
-    <label label={labelText} halign={3} />
+    <Divider />
+    <Gtk.ScrolledWindow
+      vscrollbarPolicy={Gtk.PolicyType.AUTOMATIC}
+      hscrollbarPolicy={Gtk.PolicyType.NEVER}
+      vexpand={true}
+      minContentHeight={200}
+      class="update-scroll"
+    >
+      <label label={labelText} halign={3} class="update-title" />
+    </Gtk.ScrolledWindow>
     <button
-    class="popup-btn"
+    class="popup-btn update-btn-install"
     onClicked={installUpdates}
     >
-    <label label="Install Updates" />
+      <label label="Install Updates" />
     </button>
     </>
   );
