@@ -1,9 +1,9 @@
 import { createPoll } from "ags/time"
-import { Popup, WithTooltip } from "../generic"
+import { Popup, ProgressBar, WithTooltip } from "../generic"
 import { createState } from "gnim"
 
 const storage = createPoll(
-  { text: "", tooltip: "" },
+  { text: "", tooltip: "", rootUsed: "1G", rootMax: "2G" },
   30_000,
   ["bash", "-c", "~/.config/waybar/scripts/get-storage.sh"],
   (out) => {
@@ -16,8 +16,16 @@ const storage = createPoll(
 );
 
 export const Disks = () => {
+  const [fill, setFill] = createState(0);
   const [visible, setVisible] = createState(false);
   const handleVisibilityChange = () => setVisible(!visible());
+
+  setFill(storage(s => { 
+    const rootUsed = Number(s.rootUsed.slice(0, -1));
+    const rootMax = Number(s.rootMax.slice(0, -1));
+    console.log(rootUsed, rootMax, s.text, s.tooltip);
+    return (rootUsed / rootMax) * 100
+  }))
 
   const labels = (
     <>
@@ -26,6 +34,7 @@ export const Disks = () => {
         label="Storage"
         halign={3}
       />
+      <ProgressBar val={fill} />
       <label
         label={storage((s) => s.text)}
       />

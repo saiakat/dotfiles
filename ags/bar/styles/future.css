@@ -344,3 +344,11 @@ calendar {
 .popup-box .update-btn-install:hover label {
   color: @accent_warning; 
 }
+
+.popup-box levelbar block {
+    background-color: @accent_primary; /* Active color */
+}
+
+.popup-box levelbar block.empty {
+    background-color: @cyan_dim; /* Active color */
+}
